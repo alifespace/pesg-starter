@@ -10,6 +10,7 @@
     "build:css": "npx @tailwindcss/cli -i ./src/styles/tw_input.css -o ./public/css/main.css",
     "build:copy:pages": "cpy \"src/pages/**/*\" public",
     "build:copy:assets": "cpy \"src/assets/**/*\" public",
+    "build:copy:js": "cpy \"javascript/**\" public",
     "build": "npm run clean && npm run build:css && npm run build:copy:pages && npm run build:copy:assets",
 
     "watch:css": "npx @tailwindcss/cli -i ./src/styles/tw_input.css -o ./public/css/main.css --watch",
