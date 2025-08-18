@@ -1,4 +1,4 @@
-.env
+**/.env
 
 .venv/
 .vscode/
@@ -9,5 +9,6 @@
 **/public
 **/dist
 **/bak
+**/.dev.vars
 
 frontend/node_modules

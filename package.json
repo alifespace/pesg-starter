@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
 
-    "dev:learning-basic": "pnpm --filter learning-basic run cf-dev",
-    "deploy-prod:learning-basic": "pnpm --filter learning-basic run cf-deploy:prod"
+    "cf-dev:learning-basic": "pnpm --filter learning-basic run cf-dev",
+    "cf-deploy:learning-basic": "pnpm --filter learning-basic run cf-deploy:prod"
   },
   "keywords": [],
   "author": "",

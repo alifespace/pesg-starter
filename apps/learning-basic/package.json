@@ -1,6 +1,6 @@
 {
   "name": "learning-basic",
-  "version": "0.0.1",
+  "version": "0.25.0818",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -9,7 +9,7 @@
     
     "clean": "rimraf dist",
     "build:css": "tailwindcss -i ./src/styles/tw_input.css -o ./dist/css/main.css",
-    "build:copy:pages": "cpy \"src/pages/**/*\" dist --parents",
+    "build:copy:pages": "cpy \"src/pages/**/*\" dist",
     "build:copy:assets": "cpy \"src/assets/**/*\" dist --parents",
     "build:copy:js": "cpy \"javascript/**\" dist --parents",
     "build": "pnpm run clean && pnpm run build:css && pnpm run build:copy:pages && pnpm run build:copy:assets",

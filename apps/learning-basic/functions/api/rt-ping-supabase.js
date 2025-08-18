@@ -1,7 +1,7 @@
 export async function onRequestGet(context) {
   const { env } = context;
   const supabaseUrl = env.SUPABASE_URL;
-  const supabaseKey = env.SUPABASE_KEY;
+  const supabaseAnonKey = env.SUPABASE_ANON_KEY;
 
   const table = "keep_alive_ping";
 
@@ -15,8 +15,8 @@ export async function onRequestGet(context) {
     const insertRes = await fetch(insertUrl, {
       method: "POST",
       headers: {
-        "apikey": supabaseKey,
-        "Authorization": `Bearer ${supabaseKey}`,
+        "apikey": supabaseAnonKey,
+        "Authorization": `Bearer ${supabaseAnonKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(payload)
@@ -32,8 +32,8 @@ export async function onRequestGet(context) {
     const selectUrl = `${supabaseUrl}/rest/v1/${table}?select=*&order=id.desc&limit=10`;
     const selectRes = await fetch(selectUrl, {
       headers: {
-        "apikey": supabaseKey,
-        "Authorization": `Bearer ${supabaseKey}`
+        "apikey": supabaseAnonKey,
+        "Authorization": `Bearer ${supabaseAnonKey}`
       }
     });
 
