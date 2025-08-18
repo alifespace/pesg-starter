@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>立即执行函数表达式</title>
+    <script>
+      /* 
+            在开发中，尽量减少直接在全局中写代码
+            - 如果使用let来声明变量，建议使用{}来建立代码块
+        */
+      // 创建一个只执行一次的匿名函数
+
+      (function () {
+        let a = 10;
+        console.log(a);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

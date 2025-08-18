@@ -11,4 +11,6 @@
 **/bak
 **/.dev.vars
 
+**/.gitignore
+
 frontend/node_modules
