@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf public",
-    "build:css": "npx @tailwindcss/cli -i ./src/styles/tw_input.css -o ./public/css/main.css",
+    "build:css": "tailwindcss -i ./src/styles/tw_input.css -o ./public/css/main.css",
     "build:copy:pages": "cpy \"src/pages/**/*\" public",
     "build:copy:assets": "cpy \"src/assets/**/*\" public",
     "build:copy:js": "cpy \"javascript/**\" public",

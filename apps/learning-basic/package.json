@@ -1,11 +1,25 @@
 {
   "name": "learning-basic",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    
+    "clean": "rimraf dist",
+    "build:css": "tailwindcss -i ./src/styles/tw_input.css -o ./dist/css/main.css",
+    "build:copy:pages": "cpy \"src/pages/**/*\" dist --parents",
+    "build:copy:assets": "cpy \"src/assets/**/*\" dist --parents",
+    "build:copy:js": "cpy \"javascript/**\" dist --parents",
+    "build": "pnpm run clean && pnpm run build:css && pnpm run build:copy:pages && pnpm run build:copy:assets",
+    
+    "watch:css": "tailwindcss -i ./src/styles/tw_input.css -o ./dist/css/main.css --watch",
+    "watch:pages": "chokidar \"src/pages/**/*\" -c \"pnpm run build:copy:pages\" --initial --debounce 200",
+    "watch:assets": "chokidar \"src/assets/**/*\" -c \"pnpm run build:copy:assets\" --initial -debounce 200",
+    
+    "cf-dev": "concurrently -k \"pnpm:watch:*\" \"wrangler pages dev dist\"",
+    "cf-deploy:prod": "pnpm run build && wrangler pages deploy dist"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +27,13 @@
   "packageManager": "pnpm@10.14.0",
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.12",
+    "chokidar": "^4.0.3",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.0",
+    "cpy": "^12.0.0",
+    "cpy-cli": "^6.0.0",
+    "jose": "^6.0.12",
+    "rimraf": "^6.0.1",
     "tailwindcss": "^4.1.12"
   }
 }
