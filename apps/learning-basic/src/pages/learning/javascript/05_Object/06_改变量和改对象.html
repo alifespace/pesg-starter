@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>改变量和改对象</title>
+    <script>
+      /*
+            改对象：
+                - 修改对象的属性时，所有指向改对象的变量都会受到影响
+
+            改变量：
+                - 修改变量时，只会影响改变量
+
+            在使用变量存储对象时，很容易改变变量所指向的对象，提高了代码的复杂度
+            所以通常情况下，声明存储对象的变量时会使用const
+        */
+      let obj1 = {
+        name: "孙悟空",
+        age: 18,
+        gender: "男",
+      };
+
+      let obj2 = obj1;
+
+      obj2.name = "猪八戒";
+
+      console.log(obj1.name);
+      console.log(obj2.name);
+      obj2 = null;
+      console.log(obj1.name);
+      console.log(obj2);
+
+      obj2 = {
+        name: "猪八戒",
+      };
+      console.log(obj1.name);
+      console.log(obj2.name);
+    </script>
+  </head>
+  <body></body>
+</html>

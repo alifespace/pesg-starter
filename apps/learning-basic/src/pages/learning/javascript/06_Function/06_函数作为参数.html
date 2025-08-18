@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数作为参数</title>
+    <script>
+      /*
+            - 在js中，函数也是一个对象
+        */
+      function fn1(a = 3) {
+        console.log(a);
+      }
+      fn1();
+
+      fn1(() => {
+        console.log("箭头函数");
+        // return;
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -5,6 +5,7 @@
 **/__pycache__
 **/node_modules
 **/public
+**/dist
 **/bak
 frontend/learning-basic/.wrangler
 

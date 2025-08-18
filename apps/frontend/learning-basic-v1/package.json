@@ -5,20 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    
     "clean": "rimraf public",
     "build:css": "npx @tailwindcss/cli -i ./src/styles/tw_input.css -o ./public/css/main.css",
     "build:copy:pages": "cpy \"src/pages/**/*\" public",
     "build:copy:assets": "cpy \"src/assets/**/*\" public",
     "build:copy:js": "cpy \"javascript/**\" public",
     "build": "npm run clean && npm run build:css && npm run build:copy:pages && npm run build:copy:assets",
-
     "watch:css": "npx @tailwindcss/cli -i ./src/styles/tw_input.css -o ./public/css/main.css --watch",
     "watch:pages": "chokidar \"src/pages/**/*\" -c \"npm run build:copy:pages\" --initial --debounce 200",
     "watch:assets": "chokidar \"src/assets/**/*\" -c \"npm run build:copy:assets\" --initial -t 200",
-
     "cf-dev": "concurrently -k \"npm:watch:*\" \"wrangler pages dev public\"",
-    
     "cf-deploy:prod": "npm run build && wrangler pages deploy public",
     "cf-deploy:preview": "npm run build && wrangler pages deploy public --branch preview"
   },
@@ -33,5 +29,9 @@
     "cry-cli": "^1.1.0",
     "rimraf": "^6.0.1",
     "tailwindcss": "^4.1.11"
+  },
+  "dependencies": {
+    "@tsndr/cloudflare-worker-jwt": "^3.2.0",
+    "jose": "^6.0.12"
   }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象作为参数</title>
+    <script>
+      /*
+            对象作为参数
+                - 传递的是变量所保存的对象指针。所以函数中修改对象时，该对象会受到影响
+        */
+      function fn1(a) {
+        console.log("a=", a);
+        a.name = "猪八戒";
+      }
+
+      //   fn1(123);
+      const obj1 = {
+        name: "孙悟空",
+      };
+
+      fn1(obj1);
+      console.log(obj1);
+    </script>
+  </head>
+  <body></body>
+</html>
