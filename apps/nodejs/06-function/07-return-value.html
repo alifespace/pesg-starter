@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数的返回值</title>
+    <script>
+      /*
+            函数的返回值
+              - 任何值都可以作为返回值，包括对象和函数
+              - return 之后函数的执行结束
+              - return 之后不跟任何值，相当于返回undefined
+              - 不写return，默认返回undefined
+        */
+      function fn1(a, b) {
+        return a + b;
+      }
+
+      function fn2(a, b) {
+        return this.fn2;
+      }
+
+      let result = fn1(123, 345);
+      console.log(result);
+
+      result = fn2(123, 345);
+      console.log(result);
+    </script>
+  </head>
+  <body></body>
+</html>

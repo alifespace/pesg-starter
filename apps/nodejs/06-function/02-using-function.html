@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /*
+            1. 函数声明
+                function 函数名() {
+                    语句...
+                }
+
+            2. 函数表达式
+                const 函数名 = function() {
+                    语句...
+                }
+            
+            3. 箭头函数
+                const 函数名 = () => {
+                    语句...
+                }
+        */
+
+      function fn1() {
+        document.write("fn1", "<br />");
+      }
+
+      const fn2 = function () {
+        document.write("fn2", "<br />");
+      };
+
+      const fn3 = () => {
+        document.write("fn3", "<br />");
+      };
+
+      const fn4 = () => document.write("fn4", "<br />");
+
+      fn1();
+      fn2();
+      fn3();
+      fn4();
+    </script>
+  </head>
+  <body></body>
+</html>

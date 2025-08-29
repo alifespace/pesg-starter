@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>可变类型</title>
+    <script>
+      /*
+        - 原始类型：
+          - 原始类型属于不可变类型，一旦创建就无法更改
+          - 在内存中不会创建重复的原始值
+        - 对象属于可变类型：
+          - 对象创建完成后，可以任意的添加删除对象中的属性
+          - 注意
+            - 如果有两个变量同时指向一个对象，通过一个变量修改对象时，对另外一个变量也会产生影响
+            - 对两个对象进行==或者===操作时，比较的是内存的地址
+
+      */
+      let a = { prop1: "孙悟空" };
+      let b = a;
+
+      console.log(`b.prop1: ${b.prop1}`);
+
+      a.prop1 = "猪八戒";
+
+      console.log(`b.prop1: ${b.prop1}`);
+
+      let mySymbol_1 = Symbol();
+      console.log(mySymbol_1);
+    </script>
+  </head>
+  <body></body>
+</html>

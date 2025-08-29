@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>类的方法</title>
+    <script>
+      class Person {
+        /*
+          自带严格模式
+        */
+        name;
+        age;
+
+        static test = "test静态属性"; // 静态属性只能通过类来访问
+
+        introMyself = function () {
+          console.log(this.name);
+        };
+        sayHello() {
+          console.log(this.name); // 在对象中看不见，但是可以调用
+        }
+
+        static testM1() {
+          console.log("我是静态/类方法");
+        }
+      }
+
+      p1 = new Person();
+      p1.name = "孙悟空";
+
+      p2 = new Person();
+      p2.name = "猪八戒";
+
+      p1.sayHello();
+      p2.sayHello();
+
+      console.log(p1);
+      console.log(Person.test);
+      console.log(Person.testM1);
+    </script>
+  </head>
+  <body></body>
+</html>
