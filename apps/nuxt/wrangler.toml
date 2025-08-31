@@ -1,0 +1,9 @@
+# 项目名称（随便起）
+name = "nuxt-static-pages"
+
+# Cloudflare Pages 静态目录
+pages_build_output_dir = ".output/public"
+
+# Functions 路径（注意，这个必须放在根级别，而不是 [site] 下）
+[pages]
+functions = "functions"

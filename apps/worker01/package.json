@@ -1,0 +1,14 @@
+{
+    "name": "@essg/worker01",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "wrangler dev",
+        "deploy": "wrangler deploy"
+    },
+    "devDependencies": {
+        "@supabase/supabase-js": "^2.56.1",
+        "wrangler": "^4.33.1",
+        "typescript": "^5.9.2"
+    }
+}

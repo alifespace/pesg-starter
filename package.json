@@ -6,9 +6,12 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-
-    "cf-dev:learning-basic": "pnpm --filter learning-basic run cf-dev",
-    "cf-deploy:learning-basic": "pnpm --filter learning-basic run cf-deploy:prod"
+    "cf-dev:basic": "pnpm --filter learning-basic run cf-dev",
+    "cf-deploy:basic": "pnpm --filter learning-basic run cf-deploy:prod",
+    "cf-build:nuxt": "pnpm --filter nuxt run cf-build",
+    "cf-deploy:nuxt": "pnpm --filter nuxt run cf-build &&pnpm --filter nuxt run cf-deploy",
+    "nu-dev:nuxt": "pnpm --filter nuxt run nu-dev",
+    "cf-dev:nuxt": "pnpm run --filter=nuxt cf-build && pnpm --filter nuxt run cf-dev"
   },
   "keywords": [],
   "author": "",

@@ -9,9 +9,13 @@
 **/.wrangler
 **/public
 **/dist
+**/.nuxt
+**/.output
 **/bak
 **/.dev.vars
 
 **/.gitignore
 
 frontend/node_modules
+
+apps/docs-out
