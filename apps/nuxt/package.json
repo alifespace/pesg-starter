@@ -1,27 +1,17 @@
 {
-  "name": "nuxt",
+  "name": "nuxt-app",
   "type": "module",
   "private": true,
   "scripts": {
-    "clean": "rimraf dist",
     "build": "nuxt build",
-    "nu-dev": "nuxt dev",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "watch:css": "pnpm exec tailwindcss -i ./app/assets/css/input.css -o ./app/assets/css/main-01.css --watch",
-    "cf-build": "pnpm run clean && pnpm exec nuxi build",
-    "cf-dev": "wrangler pages dev dist",
-    "cf-deploy": "wrangler pages deploy dist"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "nuxt": "^4.0.3",
     "vue": "^3.5.20",
     "vue-router": "^4.5.1"
-  },
-  "devDependencies": {
-    "@supabase/supabase-js": "^2.56.1",
-    "@tailwindcss/cli": "^4.1.12",
-    "tailwindcss": "^4.1.12"
   }
 }

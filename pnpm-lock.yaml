@@ -148,16 +148,6 @@ importers:
       vue-router:
         specifier: ^4.5.1
         version: 4.5.1(vue@3.5.20(typescript@5.9.2))
-    devDependencies:
-      '@supabase/supabase-js':
-        specifier: ^2.56.1
-        version: 2.56.1
-      '@tailwindcss/cli':
-        specifier: ^4.1.12
-        version: 4.1.12
-      tailwindcss:
-        specifier: ^4.1.12
-        version: 4.1.12
 
   apps/vue3:
     dependencies:
