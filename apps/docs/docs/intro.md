@@ -49,7 +49,24 @@ sidebar_position: 1
 
 ### 后端技术栈
 
-- 开发语言：_Javascript/Typescript_；
+- 开发语言：_Javascript/Typescript, Markdown, python, SQL_；
 - 数据库：_SQLite, PostgreSQL_；
 - 文档管理后台：_Docusaurus_；
 - 服务 _API_：_Wrangler, Supabase_；
+
+## 安排
+
+### 第一阶段
+
+时间：2周。主要关注内容：
+- 熟悉 _javascript/Typescript_ 异步函数，包的管理与引入；
+- 文档数据库的实现；
+- 基于 _Javascript/Typescript, Nuxt_ 前端的实现；
+- 对 _Cloudflare Workers_ 的调用，并且在 _Nuxt_ 框架中可以使用完成云端函数功能；
+
+### 第二阶段
+
+时间：2周。主要关注内容：
+- 对 _Supabase_ 服务的调用；
+- 鉴权/授权，_jwt_；
+- 进一步掌握 _Nuxt_ 的内容，完成视频至少一个教程；
