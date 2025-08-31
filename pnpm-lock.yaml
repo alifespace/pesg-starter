@@ -137,7 +137,7 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
 
-  apps/nuxt:
+  apps/nuxt01:
     dependencies:
       nuxt:
         specifier: ^4.0.3
