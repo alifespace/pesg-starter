@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "clean": "rimraf out",
+    "dev": "next dev --turbopack --port 3005",
     "build": "next build --turbopack",
     "start": "next start",
+    "cf-deploy": "wrangler pages deploy ./out",
     "lint": "eslint"
   },
   "dependencies": {

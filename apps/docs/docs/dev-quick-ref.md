@@ -40,6 +40,33 @@ ESSG-STARTER
 @essg/<project-name>
 ```
 
+## 环境设置
+
+### 安装新版本的 _Node.js_
+
+```bash
+nvm install <版本名字>
+nvm use <版本名字>
+```
+
+### 安装常用全局包
+
+我采用`npm`管理全局包，用`pnpm`管理和项目相关的包。
+
+```bash
+npm install -g npm-check-updates@latest pnpm@latest wrangler@latest vercel@latest
+npm install -g rimraf@latest concurrently@latest chokidar-cli@latest
+```
+
+### 安装 _pnpm_ 快捷方式
+
+由于`pnpm`和`npm`过于类似，为了防止误输入，建立一个别名`pp`。
+
+```powershell
+# Windows 下
+Set-Alias -Name pp -Value pnpm
+```
+
 ## 内部启动 _Docusaurus_
 
 ```bash

@@ -8,6 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cf-dev:basic": "pnpm --filter learning-basic run cf-dev",
     "cf-deploy:basic": "pnpm --filter learning-basic run cf-deploy:prod",
+    "ne-dev:next01": "pnpm --filter=@essg/next01 run dev",
+    "cf-deploy:next01": "pnpm --filter=@essg/next01 clean && pnpm --filter=@essg/next01 run build && pnpm --filter=@essg/next01 run cf-deploy",
     "nu-dev:nuxt01": "pnpm --filter @essg/nuxt01 run dev",
     "cf-dev:nuxt01": "pnpm run --filter=@essg/nuxt01 cf-dev",
     "cf-build:nuxt01": "pnpm --filter @essg/nuxt01 run cf-build",
