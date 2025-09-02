@@ -58,10 +58,10 @@ _nxut.config.ts_ 在项目目录下，为了更好的兼容 _Cloudflare Pages_�
 
 ```bash
 export default defineNuxtConfig({
-ssr: true,
-nitro: {
-    preset: 'cloudflare-pages'
-}
+  ssr: true,
+  nitro: {
+      preset: 'cloudflare-pages',
+  }
 })
 ```
 
@@ -99,3 +99,45 @@ wrangler pages deploy dist --project-name=<项目名称>
 
 说明：
 - 第一次执行完后，以后不需要再指定 _--project-name_；
+
+## `nuxt.config.ts`
+
+_Nuxt Javascript Framework_ 使用 _Nitro_ 作为核心构建引擎。它负责将您的 Nuxt 应用编译成适合在不同环境中部署的格式，如 Node.js 服务器、无服务器函数（Serverless Functions）或边缘函数（Edge Functions）。
+
+_Nitro_ 没有固定的“开关”列表，而是使用**预设（_presets_）**来配置不同的构建目标。每个预设都代表一种特定的部署环境，并且会根据该环境自动调整所有必要的配置。
+
+您可以将这些预设看作是 _Nitro_ 的“开关”，每个开关都决定了最终的打包方式。
+
+---
+常用的 _Nitro_ 预设（_Presets_）
+以下是一些最常见的预设，它们涵盖了您可能遇到的各种部署场景：
+
+1. _node_ (默认):
+
+    用途：用于在标准的 _Node.js_ 服务器上运行 _Nuxt_ 应用。
+
+    特点：生成一个可以在任何 _Node.js_ 环境下运行的服务器脚本。这是您在本地开发和测试时使用的默认预设。
+
+2. _vercel_:
+
+    用途：专为 _Vercel_ 平台优化。
+    
+    特点：自动将您的应用拆分为静态资源和 _Vercel Serverless Functions_。这与 _Next.js_ 在 _Vercel_ 上的部署方式非常相似，它会智能地将 _SSR_ 页面和 _API_ 路由打包成函数。
+
+3. _netlify_:
+
+    用途：专为 _Netlify_ 平台优化。
+
+    特点：与 _Vercel_ 预设类似，但它会生成符合 _Netlify Functions_ 规范的无服务器函数。
+
+4. _cloudflare-pages_:
+
+    用途：专为 _Cloudflare Pages_ 和 _Cloudflare Workers_ 平台优化。
+
+    特点：生成可以在 _Cloudflare_ 的边缘网络上运行的 _Worker_。这是一种非常高效的部署方式，可以在全球多个数据中心运行，提供极低的延迟。
+
+5. _static_:
+
+    用途：生成一个完全静态的网站。
+
+    特点：当您只想构建一个纯粹的静态网站（没有 _SSR_ 或 _API_ 路由）时，可以使用这个预设。它会生成所有页面的 _HTML_ 文件，可以托管在任何静态文件服务上，如 _Cloudflare Pages_ 或 _GitHub Pages_。

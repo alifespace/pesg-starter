@@ -155,7 +155,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Riplon, Inc. Ver. 0.08.31 Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Riplon, Inc. Ver. 0.09.02 Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
