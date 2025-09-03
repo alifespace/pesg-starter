@@ -13,7 +13,7 @@
     "nu-dev:nuxt01": "pnpm --filter @essg/nuxt01 run dev",
     "cf-dev:nuxt01": "pnpm run --filter=@essg/nuxt01 cf-dev",
     "cf-build:nuxt01": "pnpm --filter @essg/nuxt01 run cf-build",
-    "cf-deploy:nuxt01": "pnpm --filter @essg/nuxt01 run cf-build &&pnpm --filter @essg/nuxt01 run cf-deploy",
+    "cf-deploy:nuxt01": "pnpm --filter @essg/nuxt01 run cf-deploy",
     "doc-dev:docs": "pnpm --filter @essg/docs start",
     "cf-deploy:docs": "pnpm --filter @essg/docs run cf-deploy"
   },

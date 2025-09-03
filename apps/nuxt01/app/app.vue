@@ -1,13 +1,8 @@
 <template>
   <div>
-    <!-- <NuxtRouteAnnouncer /> -->
-    <!-- <NuxtWelcome /> -->
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <!-- <NuxtRouteAnnouncer />
+    <NuxtWelcome /> -->
+    <h1>Always me!</h1>
+    <NuxtPage />
   </div>
 </template>
-
-<!-- <script setup>
-const layout1 = "another";
-</script> -->

@@ -1,18 +1,16 @@
 {
   "name": "@essg/nuxt01",
-  "version": "0.08.31",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "pnpm run clean && nuxt build",
+    "clean": "rimraf dist",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall-nuxt": "nuxt prepare",
-    "clean": "rimraf dist",
-    "cf-build": "pnpm run build",
-    "cf-dev": "pnpm run build && wrangler pages dev dist",
-    "cf-deploy": "pnpm run cf-build && wrangler pages deploydist"
+    "postinstall": "nuxt prepare",
+    "cf-build": "pnpm run clean && pnpm run build",
+    "cf-deploy": "pnpm run cf-build && wrangler pages deploy dist"
   },
   "dependencies": {
     "nuxt": "^4.0.3",
@@ -20,7 +18,6 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.14.0",
-    "daisyui": "^5.0.54"
+    "@nuxtjs/tailwindcss": "^6.14.0"
   }
 }

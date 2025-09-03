@@ -50,7 +50,24 @@ pnpm --filter @essg/nuxt01 build   # 构建生产环境
 pnpm --filter @essg/nuxt01 preview # 预览生产构建
 ```
 
+
+## `nuxt.config.ts`
+
 ### 部署到 _Cloudflare Pages_
+
+可以在`nuxt.config.ts`文件中，通过 _nitro_ 选项来设置 _preset_。
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  nitro: {
+    // 假设想部署到 Cloudflare Pages
+    preset: 'cloudflare-pages',
+  },
+});
+```
+
+设置完成后，运行`npm run build`时，_Nitro_ 就会根据指定的预设来生成相应的构建产物。
 
 **1. 配置 _nuxt.config.ts_**
 
@@ -100,13 +117,11 @@ wrangler pages deploy dist --project-name=<项目名称>
 说明：
 - 第一次执行完后，以后不需要再指定 _--project-name_；
 
-## `nuxt.config.ts`
-
 _Nuxt Javascript Framework_ 使用 _Nitro_ 作为核心构建引擎。它负责将您的 Nuxt 应用编译成适合在不同环境中部署的格式，如 Node.js 服务器、无服务器函数（Serverless Functions）或边缘函数（Edge Functions）。
 
 _Nitro_ 没有固定的“开关”列表，而是使用**预设（_presets_）**来配置不同的构建目标。每个预设都代表一种特定的部署环境，并且会根据该环境自动调整所有必要的配置。
 
-您可以将这些预设看作是 _Nitro_ 的“开关”，每个开关都决定了最终的打包方式。
+可以将这些预设看作是 _Nitro_ 的“开关”，每个开关都决定了最终的打包方式。
 
 ---
 常用的 _Nitro_ 预设（_Presets_）
@@ -141,3 +156,9 @@ _Nitro_ 没有固定的“开关”列表，而是使用**预设（_presets_）*
     用途：生成一个完全静态的网站。
 
     特点：当您只想构建一个纯粹的静态网站（没有 _SSR_ 或 _API_ 路由）时，可以使用这个预设。它会生成所有页面的 _HTML_ 文件，可以托管在任何静态文件服务上，如 _Cloudflare Pages_ 或 _GitHub Pages_。
+
+  ---
+
+
+
+## _nuxt.config.ts_ 设置

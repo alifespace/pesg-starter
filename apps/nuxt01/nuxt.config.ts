@@ -2,9 +2,12 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   modules: ["@nuxtjs/tailwindcss"],
-  ssr: true,
+  // css: ["~/assets/css/tailwind.css"],
   nitro: {
-    preset: "cloudflare-pages", // 直接发布到 Cloudflare Pages
+    preset: "cloudflare-pages",
   },
   devtools: { enabled: true },
+  devServer: {
+    port: 3550,
+  },
 });

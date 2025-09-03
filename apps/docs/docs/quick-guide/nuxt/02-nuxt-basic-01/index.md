@@ -37,6 +37,20 @@ my-nuxt-app/
 └─ .gitignore
 ```
 
+## 路由（_routing_）
+
+### `app.vue`
+
+缺省情况下，_Nuxt_ 将使用`app.vue`作为入口点（_entrypoint_），并且会使用他的内容作为应用中每个路由的一部分。
+
+```vue
+<template>
+  <div>
+    <h1>Welcome to Nuxt!</h1>
+  </div>
+<template>
+```
+
 ## 布局
 
 在 _Nuxt 4.x_ 中，布局的设置文件需要放在 `app/layouts` 目录下。

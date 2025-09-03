@@ -1,5 +1,3 @@
 <template>
-  <div>
-    <h1>Hello Vue3</h1>
-  </div>
+  <h1>Welcome Nuxt!</h1>
 </template>
