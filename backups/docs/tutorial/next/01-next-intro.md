@@ -11,28 +11,6 @@ pnpm create next-app@latest ./
 
 ## 准备发布
 
-### 发布到 _Vercel_
- **1. 登录 `vercel`
- ```bash
-npx vercel login
-```
-
-**2. 部署到 _vercel**
-在你的项目根目录（比如`apps/nuxt01`）执行：
-
-```bash
-vercel
-```
-
-**3. 更新到 _Vercel_**
-如果在 _monorepo_（`essg-starter/apps/nuxt01`），要在子目录部署：
-
-```bash
-cd apps/nuxt01
-vercel --prod
-```
-
-
 ### 发布到 _Cloudflare_
 
 **1. 发布静态站点**

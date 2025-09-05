@@ -1,6 +1,6 @@
 {
   "name": "@essg/docs",
-  "version": "0.8.31",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -12,12 +12,10 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc",
-    "cf-deploy": "docusaurus clear && docusaurus build && wrangler pages deploy ./build"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@docusaurus/core": "3.8.1",
-    "@docusaurus/plugin-client-redirects": "^3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
