@@ -12,25 +12,25 @@ export default function Course01Index() {
         </li>
         <li>
           <a
-            href="/course03/c02-02-3api-detail.html"
+            href="/course03/ch02-02-3api-detail.html"
             target="_blank"
             rel="noopener noreferrer"
           >
-            1.2 三个API的详细解释"
+            1.2 三个API的详细解释
           </a>
         </li>
         <li>
           <a
-            href="/course03/c02-03-3api-detail.html"
+            href="/course03/ch02-03-3api-detail.html"
             target="_blank"
             rel="noopener noreferrer"
           >
-            1.3 三个API的详细解释"
+            1.3 三个API的详细解释
           </a>
         </li>
         <li>
           <a
-            href="/course03/c02-04-jsx.html"
+            href="/course03/ch02-04-jsx.html"
             target="_blank"
             rel="noopener noreferrer"
           >

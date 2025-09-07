@@ -73,5 +73,28 @@ Set-Alias -Name pp -Value pnpm
 pnpm run doc-dev:docs
 ```
 
+## 学习考虑
 
+### 关注技术栈
 
+**开发语言**
+- JavaScript（ES2020）/TypeScript；
+- Python（3.13）；
+- SQL；
+- Markdown；
+
+**语言框架**
+- React；
+- React Router；
+- Next.js；
+- FastAPI；
+
+**开发平台**
+- Vercel（网站托管 / _Nodejs_）；
+- Cloudflare（Pages / Cloud Functions）；
+- Supabase（数据库 / 鉴权 / Edge Functions）；
+- GCP （Cloud Functions）；
+
+**项目**
+- `Docs` -> 文档制作；
+- `Router01` -> javaScript、TypeScript 学习 / React 学习 / React Router 学习；
