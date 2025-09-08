@@ -1,2 +1,2 @@
-# essg-starter
+# pssg-starter
 开始搭建一个真正有用的网站，实验前后端分离的技术。

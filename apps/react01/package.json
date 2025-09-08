@@ -1,5 +1,5 @@
 {
-  "name": "@essg/react01",
+  "name": "@pesg/react01",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
-    "@tanstack/react-router": "^1.131.35",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.0",

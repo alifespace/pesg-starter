@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf build",
-    "build": "react-router build",
+    "build": "pnpm run clean && react-router build",
     "dev": "react-router dev --port 3551",
     "start": "react-router-serve ./build/server/index.js",
-    "vc-deploy": "pnpm run clean && pnpm run build && vercel --prod",
+    "vc-deploy": "vercel --prod",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {

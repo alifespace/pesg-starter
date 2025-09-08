@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>三个API</title>
+    <script src="../script/react.development.js"></script>
+    <script src="../script/react-dom.development.js"></script>
+  </head>
+  <body>
+    <button id="btn01">我是HTML中的按钮</button>
+    <div id="root"></div>
+
+    <script>
+      /*
+       * React.createElement()
+       *  - 用来创建一个 React 元素
+       *  - 参数：
+       *    1. 元素的名称（html标签必须小写）；
+       *    2. 标签中的属性
+       *      - 在设置事件时，属性名需要修改为驼峰命名法
+       *      - 而且需要绑定一个箭头函数，在函数里面调用js提供的内置函数功能
+       *      - 为了避免冲突，class属性需要使用className来设置
+       *    3. 元素的内容（子元素）
+       *  - 注意点：
+       *    1. 在网页应用中，React元素最终会通过虚拟DOM转换为真实的DOM元素；
+       *    2. React元素一旦创建就无法修改，只能创建新的元素去替换；
+       */
+
+      // 创建一个 React 元素
+      const button = React.createElement(
+        "button",
+        {
+          id: "btn",
+          type: "button",
+          onClick: () => {
+            alert("你点我干嘛");
+          },
+        },
+        "点我一下"
+      );
+
+      const div = React.createElement("div", {}, "我是一个div", button);
+
+      // 获取根元素
+      root = ReactDOM.createRoot(document.getElementById("root"));
+
+      // 将元素在根中渲染
+      root.render(div);
+
+      const btn01 = document.getElementById("btn01");
+      btn01.addEventListener("click", () => {
+        // 点击后，修改div中的button的文字为clickme
+        const button = React.createElement(
+          "button",
+          {
+            id: "btn",
+            type: "button",
+            onClick: () => {
+              alert("你点我干嘛");
+            },
+          },
+          "Click me"
+        );
+
+        // 再创建一个div
+        const div = React.createElement("div", {}, "我是一个div", button);
+
+        // 需要重写渲染根元素
+        // 当调用render渲染页面时，react会自动比较两次渲染的元素，只在真实的DOM中更新发生变化的部分
+        root.render(div);
+      });
+    </script>
+  </body>
+</html>

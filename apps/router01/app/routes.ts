@@ -9,6 +9,10 @@ export default [
   index("routes/home.tsx"),
   route("test01", "routes/test01/test01.tsx"),
   route("course03", "routes/course03/index.tsx"),
+  route(
+    "course03/c04-learning-log",
+    "routes/course03/c04-learning-log/index.tsx"
+  ),
   /*
   route(
     "course03/02-hello-react/01-hello-react",
