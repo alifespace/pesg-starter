@@ -12,6 +12,7 @@
         "typescript": "^5.9.2"
     },
     "dependencies": {
-        "drizzle-orm": "^0.44.5"
+        "drizzle-orm": "^0.44.5",
+        "hono": "^4.9.7"
     }
 }
