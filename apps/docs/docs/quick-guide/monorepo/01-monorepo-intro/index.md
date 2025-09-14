@@ -61,31 +61,41 @@
 ## 目录结构
 
 ```bash
-repo/
-├─ apps/
-│  ├─ frontend/               # Cloudflare Pages 项目（站点）
-│  │  ├─ src/                 # 前端源码
-│  │  ├─ dist/                # 构建产物（不进 Git）
-│  │  ├─ functions/           # Pages Functions 源码（API/边缘函数）
-│  │  ├─ package.json
-│  │  └─ .dev.vars
-│  ├─ backend/                # 独立 Worker（如果有）
-│  │  ├─ src/                 # Worker 源码
-│  │  ├─ package.json
-│  │  └─ wrangler.toml
-│  └─ learning-basic/         # 你现在这个 app
-│     ├─ src/                 # 源码
-│     ├─ dist/                # 构建产物（不进 Git）
-│     ├─ functions/           # 若此 app 是一个 Pages 项目并使用 Functions
-│     └─ package.json
-├─ packages/
-│  └─ logger/
-│     ├─ src/                 # 共享库源码（JS/TS）
-│     ├─ package.json
-│     └─ (可选) tsup/rollup 配置
-├─ pnpm-workspace.yaml
-├─ package.json               # 根 scripts（dev、build、deploy 等）
-└─ .gitignore
+pesg-starter/
+│── .venv/                  # ✅ 根目录默认 Python 环境（全局通用）
+│── package.json            # JS/TS 根配置
+│── node_modules/           # Node 依赖
+│
+│── apps/                   # JS/TS 应用
+│   ├── frontend/
+│   └── backend/
+│
+│── libs/                   # JS/TS 工具库
+│
+│── python/                 # Python 子项目集合
+│   ├── project-a/
+│   │   ├── src/
+│   │   │   └── main.py
+│   │   ├── requirements.txt
+│   │   └── tests/
+│   │
+│   ├── project-b/
+│   │   ├── .venv/          # ✅ 特殊依赖 → 独立虚拟环境
+│   │   ├── src/
+│   │   │   └── main.py
+│   │   ├── requirements.txt
+│   │   └── tests/
+│   │
+│   └── project-c/
+│       ├── pyproject.toml
+│       ├── src/
+│       └── tests/
+│
+│── .vscode/
+│   ├── launch.json         # VS Code 调试配置
+│   └── settings.json       # VS Code 解释器默认指向根目录 .venv
+│
+│── .gitignore
 ```
 
 现代前端**通常把源码（_src_ 等）和产物目录（_public / dist / build_）分开**。这样的好处是，_CI/CD_ 更清晰：`build → public/dist → deploy`。
@@ -94,7 +104,7 @@ repo/
 - **`pnpm run build`** 生成产物到 `public/`（或 `dist/`、`build/`）；
 - 部署平台只上传产物目录，不包含源码；
 
-在以上的目录结构中，_monorepo_ 中共有三个项目，_frontend, backend, learning-basic_，部署的平台是 _Cloudflare_，使用的服务包括 _pages & functions, workers, D1, KV_ 等。而且还包括对 _supabase_ 功能的调用，其中：
+在以上的目录结构中，_monorepo_ 中共有三基于 _JavaScript_ 的项目，_frontend, backend, learning-basic_，部署的平台是 _Cloudflare_，使用的服务包括 _pages & functions, workers, D1, KV_ 等。而且还包括对 _supabase_ 功能的调用，其中：
 - 采用的包管理工具是 _pnpm_；
 - _learning-basic_ 主要是学习的内容，开发语言初期主要是 _javascript_，后期会加入 _typescript_。其中网站所有的源码在`src/`中，`functions/`中包括部分 _edge function_ 的功能；
 - **packages 放在仓库根的 `packages/` 目录**（和 `apps/` 并列），永远放“**源代码**”，不要放到任何 app 的 `src/` 或 `dist/` 下面；

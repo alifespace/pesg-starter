@@ -9,6 +9,7 @@
     "cf-dev:basic": "pnpm --filter learning-basic run cf-dev",
     "cf-deploy:basic": "pnpm --filter learning-basic run cf-deploy:prod",
     "rr-dev:router01": "pnpm --filter @pesg/router01 run dev",
+    "build:react01": "pnpm --filter @pesg/react01 run build",
     "ne-dev:next01": "pnpm --filter=@essg/next01 run dev",
     "cf-deploy:next01": "pnpm --filter=@essg/next01 clean && pnpm --filter=@essg/next01 run build && pnpm --filter=@essg/next01 run cf-deploy",
     "nu-dev:nuxt01": "pnpm --filter @essg/nuxt01 run dev",
@@ -17,7 +18,9 @@
     "cf-deploy:nuxt01": "pnpm --filter @essg/nuxt01 run cf-deploy",
     "doc-dev:docs": "pnpm --filter @pesg/docs start",
     "cf-deploy:docs": "pnpm --filter @pesg/docs run cf-deploy",
-    "vc-deploy:router01": "pnpm --filter @essg/router01 run vc-deploy"
+    "vc-deploy:router01": "pnpm --filter @essg/router01 run vc-deploy",
+    "cf-deploy:react01": "pnpm --filter @pesg/react01 run cf-deploy",
+    "dev:react01": "pnpm --filter @pesg/react01 run dev"
   },
   "keywords": [],
   "author": "",

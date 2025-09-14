@@ -1,0 +1,11 @@
+{
+    "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+    "buildCommand": "pnpm --filter=@pesg/react01 run build",
+    "outputDirectory": "dist",
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
+    ]
+}

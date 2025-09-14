@@ -14,13 +14,53 @@ pnpm dev
 
 ### 项目的目录结构
 ```txt
-my-app/
-  index.html          # 入口 HTML
-  vite.config.ts      # Vite 配置文件
-  src/
-    main.tsx          # React 入口文件
-    App.tsx           # 主组件
-    assets/           # 静态资源
+project-root/
+├─ public/                  # 静态资源目录，构建时原样复制
+│   └─ favicon.svg
+│
+├─ src/                     # 源代码目录
+│   ├─ assets/              # 图片、字体、全局样式等静态资源
+│   │   ├─ images/
+│   │   └─ styles/
+│   │       ├─ globals.css
+│   │       └─ variables.css
+│   │
+│   ├─ components/          # 可复用的 UI 组件
+│   │   ├─ Button.tsx
+│   │   ├─ Header.tsx
+│   │   └─ Footer.tsx
+│   │
+│   ├─ pages/               # 页面组件（对应路由）
+│   │   ├─ Home.tsx
+│   │   ├─ About.tsx
+│   │   └─ sub/
+│   │       └─ Test.tsx
+│   │
+│   ├─ layouts/             # 页面布局（可选，比如带导航栏/侧边栏的 Layout）
+│   │   └─ MainLayout.tsx
+│   │
+│   ├─ hooks/               # 自定义 hooks
+│   │   └─ useAuth.ts
+│   │
+│   ├─ context/             # React Context（全局状态管理）
+│   │   └─ AuthContext.tsx
+│   │
+│   ├─ services/            # 与后端 API 交互
+│   │   ├─ api.ts           # Axios/Fetch 封装
+│   │   └─ userService.ts
+│   │
+│   ├─ types/               # TypeScript 类型定义
+│   │   └─ user.d.ts
+│   │
+│   ├─ App.tsx              # 根组件（路由入口）
+│   ├─ main.tsx             # 应用入口（挂载 React）
+│   └─ vite-env.d.ts        # Vite 自动生成的类型声明
+│
+├─ .eslintrc.js             # ESLint 配置
+├─ tsconfig.json            # TS 配置（含路径别名）
+├─ vite.config.ts           # Vite 配置
+├─ package.json
+└─ pnpm-lock.yaml
 ```
 - `index.html`：项目的 _HTML_ 模板，_Vite_ 会在这里挂载 _React_ 应用；
 - `main.tsx`：_React_ 入口，把 `<App />` 挂载到 _DOM_。`main.tsx` 是在 `index.html` 中指定的；
@@ -163,3 +203,60 @@ function Test() {
 }
 export default Test;
 ```
+
+## 路径别名
+
+在 _Vite + TypeScript_ 项目里，可以配置路径别名，让你写类似：`
+```tsx
+import MyComponent from "@/components/MyComponent";
+```
+
+### 1. 修改 `tsconfig.json`（或者 `tsconfig.app.json`）
+
+- _TypeScript_ 在你写代码时做类型检查，也要知道 _@/components/..._ 是什么意思；
+- 否则 _IDE/tsc_ 会报错：_Cannot find module '@/components/xxx'_；
+- 所以要在 `tsconfig.json` 里加上：
+
+找到 _compilerOptions_，加上 _paths_：
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+这样 `@/components/...` 就会映射到 `src/components/...`。
+
+### 2. 修改 `vite.config.ts`
+
+- _Vite_ 在解析 _import_ 的时候，需要知道 _@/components/..._ 实际文件在哪；
+- 所以要在 `vite.config.ts` 里告诉它：
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+});
+```
+
+### 3. 使用方式
+
+现在在任何地方都可以这样写：
+``` tsx
+import MyComponent from "@/components/MyComponent";
+```
+
+
+

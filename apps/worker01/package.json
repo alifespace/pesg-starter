@@ -1,5 +1,5 @@
 {
-    "name": "@essg/worker01",
+    "name": "@pesg/worker01",
     "version": "0.0.1",
     "private": true,
     "scripts": {
@@ -8,7 +8,10 @@
     },
     "devDependencies": {
         "@supabase/supabase-js": "^2.56.1",
-        "wrangler": "^4.33.1",
+        "drizzle-kit": "^0.31.4",
         "typescript": "^5.9.2"
+    },
+    "dependencies": {
+        "drizzle-orm": "^0.44.5"
     }
 }
