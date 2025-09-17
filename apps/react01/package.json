@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3552",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && && rimraf dist/cl-nodejs",
     "lint": "eslint .",
     "preview": "vite preview",
     "cf-deploy": "wrangler pages deploy dist"
