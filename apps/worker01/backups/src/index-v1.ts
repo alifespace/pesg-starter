@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { rtKeepSbAlive } from "./routes/rt-keep-sb-alive";
+import { rtKeepSbAlive } from "../../src/routes/rt-keep-sb-alive";
 // import { getUsers } from "./routes/get-users";
 // import { healthCheck } from "./routes/health-check";
 

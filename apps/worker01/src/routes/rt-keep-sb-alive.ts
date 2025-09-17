@@ -7,7 +7,7 @@ interface Env {
   SUPABASE_ANON_KEY: string;
 }
 
-export const rtKeepSbAlive = async (
+export const keepSbAlive = async (
   c: Context<{ Bindings: Env }>
 ): Promise<Response> => {
   // 1. Create the Supabase client using environment variables from the context

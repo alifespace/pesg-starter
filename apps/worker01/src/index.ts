@@ -1,7 +1,8 @@
 import { Hono } from "hono";
-import { rtKeepSbAlive } from "./routes/rt-keep-sb-alive"; // 导入您修改后的 Hono 风格函数
 import { cors } from "hono/cors";
 import { createClient, User } from "@supabase/supabase-js";
+import { keepSbAlive } from "./routes/rt-keep-sb-alive"; // 导入您修改后的 Hono 风格函数
+import rtestRoute from "./routes/rtest/rtest";
 
 // 步骤 2: 更新 Env 类型定义
 type Env = {
@@ -20,12 +21,24 @@ const app = new Hono<Env>();
 
 // 配置 CORS，允许你的前端应用访问
 app.use(
-  "/api/*",
+  "/*",
   cors({
-    origin: "http://localhost:3552", // 本地开发前端的地址，部署后需要修改
-    allowHeaders: ["Authorization", "Content-Type"],
+    origin: [
+      "http://localhost:3552",
+      "http://localhost:4173",
+      "https://riplon.net",
+      "https://learning01.riplon.net",
+    ], // 本地开发前端的地址，部署后需要修改
+    allowHeaders: [
+      "X-Custom-Header",
+      "Upgrade-Insecure-Requests",
+      "Authorization",
+      "Content-Type",
+    ],
     allowMethods: ["POST", "GET", "OPTIONS"],
+    exposeHeaders: ["Content-Length"],
     maxAge: 600,
+    credentials: true,
   })
 );
 
@@ -60,25 +73,52 @@ app.use("/api/me/*", async (c, next) => {
 
 // ！！！关键点在这里 ！！！
 // 使用 app.post 来注册路由，而不是使用手动的 routes 对象
-// Hono 的 app.post 会自动将 Context 对象 (c) 传递给 rtKeepSbAlive 函数
-app.post("/rt-keep-sb-alive", rtKeepSbAlive);
+// Hono 的 app.post 会自动将 Context 对象 (c) 传递给 keepSbAlive 函数
+app.post("/v1/keep-sb-alive", keepSbAlive);
+
+app.get("/rtest/01", (c) => {
+  return c.json({ message: "Hello Hono from /test/01!" });
+});
+
+// app.get("/rtest/03", (c) => {
+//   // 1. 从请求头中获取 Authorization header
+//   const authHeader = c.req.header("Authorization");
+
+//   let jwt = "none";
+
+//   // 2. 检查 header 是否存在，并且格式是否为 "Bearer <token>"
+//   if (authHeader && authHeader.startsWith("Bearer ")) {
+//     // 3. 如果是，就提取出 JWT 部分
+//     // split(' ') 会把 "Bearer <token>" 分割成 ["Bearer", "<token>"]
+//     jwt = authHeader.split(" ")[1];
+//   }
+
+//   // 4. 返回 JSON 格式的响应
+//   return c.json({
+//     message: "This is a public API endpoint.",
+//     jwt: jwt,
+//     timestamp: new Date().toISOString(),
+//   });
+// });
 
 // 您可以继续添加其他路由
 // app.get("/get-users", getUsers);
 // app.get("/health-check", healthCheck);
 // 公共路由 - 任何人都可以访问
-app.get("/api/hello", (c) => {
+app.get("/v1/hello", (c) => {
   return c.json({ message: "Hello from Hono!" });
 });
 
 // 受保护的路由 - 只有通过认证中间件的用户才能访问
-app.get("/api/me", (c) => {
+app.get("/v1/me", (c) => {
   const user = c.get("user");
   return c.json({
     message: "You are authorized!",
     user: user,
   });
 });
+
+app.route("/rtest", rtestRoute);
 
 // 添加统一的错误处理中间件
 app.onError((err, c) => {

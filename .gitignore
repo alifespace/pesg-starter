@@ -1,21 +1,60 @@
-**/.env
+# Git that manages the entire monorepo repository
 
+# ignore tools package
 .venv/
-.vscode/
-**/project01/
+**/.vscode/
+**/.idea/
+**/.DS_Store/
+**/node_modules/
+**/.wrangler/
+**/.vercel/
+**/dist/
+**/.DS_Store
+
+**/.env
+**/.env.*
+
+# for python
+
 **/__pycache__
-**/node_modules
+
 **/.pnpm
-**/.wrangler
-**/public
+
 **/dist
 **/.nuxt
 **/.output
 **/bak
 **/.dev.vars
-
-**/.gitignore
+**/.env.*
 
 frontend/node_modules
 
 apps/docs-out
+**/project01/
+
+# Combine
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.vercel
+.env*

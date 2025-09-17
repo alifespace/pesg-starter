@@ -6,6 +6,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "wk:worker01": "pnpm --filter @pesg/worker01 run dev",
+    "cf-deploy:worker01": "pnpm --filter @pesg/worker01 run deploy",
     "cf-dev:basic": "pnpm --filter learning-basic run cf-dev",
     "cf-deploy:basic": "pnpm --filter learning-basic run cf-deploy:prod",
     "rr-dev:router01": "pnpm --filter @pesg/router01 run dev",

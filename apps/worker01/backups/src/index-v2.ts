@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { rtKeepSbAlive } from "./routes/rt-keep-sb-alive"; // 导入您修改后的 Hono 风格函数
+import { rtKeepSbAlive } from "../../src/routes/rt-keep-sb-alive"; // 导入您修改后的 Hono 风格函数
 
 // 定义环境类型
 interface Env {
