@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组简介</title>
+    <link rel="icon" href="/images/school.svg" type="image/svg+xml" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      const obj1 = { name: "孙悟空", age: 18, z: "测试" }; // 无序属性
+      console.log(obj1.name, obj1.z);
+
+      const arr1 = new Array();
+      const arr2 = [1, 2]; // 数组字面量
+
+      console.log(arr2[1]);
+      arr2[1] = 3;
+      console.log(arr2[1]);
+
+      console.log("arr1.length: ", arr1.length);
+      arr1[12] = 13;
+      console.log("arr1.length: ", arr1.length);
+      console.log(arr1[10], arr1[20], arr1)
+      console.log(typeof arr1);    // 返回 object
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+
+    <pre id="md-source" hidden>
+## 数组（Array）：
+
+- 数组也是一种复合数据类型，在数组中可以存储多个不同类型的数据
+- 数组中存储的是有序数据，数组中的每个数据都有一个唯一的索引
+    - 可以通过索引来获得数据
+- 数组中存储的数据叫做元素
+- 索引（index）是一组大于0的整数。JS中最大的索引是一个32位的整数，大约42亿左右
+- 创建数组
+    - 通过 Array() 来创建数组
+    - 通过数组字面量 [] 来创建数组
+    - 向数组添加元素：
+      - 语法：
+          数组[索引] = 元素
+    - 读取数组的元素：
+      - 语法：数组[索引]
+      - 如果读取了一个不存在的元素，不会报错而是返回 undefined
+    - length：
+      - 数组的属性，arr1.length，返回数组的长度；
+      - 获取的实际值就是数组的最大索引 + 1；
+      - 向数组的最后添加元素：arr1[arr1.length] = 元素；
+      - length是可以修改的，可以直接扩大数组的规模/删除多余的元素，arr.length = 101;
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+
+
+      eID.remove();
+    </script>
+  </body>
+</html>

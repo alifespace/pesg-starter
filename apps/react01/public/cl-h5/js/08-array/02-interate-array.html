@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>遍历数组</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      // 任何数据类型都可以是数组的元素
+      // 创建数组时，尽量确保数组中存储的数据类型是一致的
+
+      let arr1 = ["孙悟空", "猪八戒", "沙和尚", "唐僧", "白骨精"];
+      for (let i=0; i<arr1.length; i++) {
+        console.log(arr1[i]);
+      }
+
+      /* 定义一个Person类，类中有两个属性 name 和 age
+            - 然后创建几个Person对象，将其添加到一个数组中
+      */
+
+      class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+      };
+
+      const personArr = [new Person("孙悟空", 25), new Person("猪八戒", 20), new Person("沙和尚", 29)];
+      for (let i=0; i<personArr.length; i++) {
+        console.log(personArr[i]);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+## 遍历数组
+
+  - 获得数组中的每一个元素
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

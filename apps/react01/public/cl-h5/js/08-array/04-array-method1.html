@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组方法简介</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      const arr1 = ["孙悟空", "猪八戒", "沙和尚", "唐僧", "白骨精"];
+      console.log(arr1);
+      console.log(arr1.at(1));
+      const arr2 = ["金角大王", "银角大王"];
+      console.log(arr1.concat(arr2), ["牛魔王", "红孩儿"]);
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+
+    <pre id="md-source" hidden>
+- Array.isArray()
+  - 检查一个对象是否是数组 
+- at() 
+  - 可以根据索引获得数组中的指定元素
+  - 类似python，可以使用负数作为参数
+- concat()
+  - 用来连接2个或者多个数组
+  - 非破坏性方法，返回一个新的数组
+
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

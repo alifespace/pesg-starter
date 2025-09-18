@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="icon" href="/images/school.svg" type="image/svg+xml" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden></pre>
+    <script>
+      const eID = document.getElementById('md-source');
+      const mdText = eID.textContent.trim();
+      document.getElementById('md-content').innerHTML = marked.parse(mdText);
+      console.log(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

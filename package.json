@@ -9,6 +9,7 @@
   
     "dev:react01": "pnpm --filter @pesg/react01 run dev",
     "build:react01": "pnpm --filter @pesg/react01 run build",
+    "cf-deploy:react01": "pnpm --filter @pesg/react01 run cf-deploy",
 
     "dev:worker01": "pnpm --filter @pesg/worker01 run dev",
     "cf-deploy:worker01": "pnpm --filter @pesg/worker01 run deploy",
@@ -25,8 +26,7 @@
     "cf-deploy:nuxt01": "pnpm --filter @essg/nuxt01 run cf-deploy",
     "doc-dev:docs": "pnpm --filter @pesg/docs start",
     "cf-deploy:docs": "pnpm --filter @pesg/docs run cf-deploy",
-    "vc-deploy:router01": "pnpm --filter @essg/router01 run vc-deploy",
-    "cf-deploy:react01": "pnpm --filter @pesg/react01 run cf-deploy"
+    "vc-deploy:router01": "pnpm --filter @essg/router01 run vc-deploy"
   },
   "keywords": [],
   "author": "",

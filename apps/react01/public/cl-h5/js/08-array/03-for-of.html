@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for-of语句</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      const arr1 = ["孙悟空", "猪八戒", "沙和尚", "唐僧", "白骨精"];
+      for (let item of arr1) {
+          console.log(item);
+      }
+      for (let item of "Hello") {
+          console.log(item);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+- for-of语句可以用来遍历可迭代对象
+    - 语法：for (变量 of 可迭代对象)
+    - 执行流程：for-of的循环体会执行多次，数组中有几个元素就会执行几次
+        - 每次执行时，都会把可迭代对象的当前元素赋值给变量
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>
