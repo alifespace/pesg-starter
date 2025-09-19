@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>类的方法</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
     <script>
       class Person {
         /*
@@ -40,5 +42,18 @@
       console.log(Person.testM1);
     </script>
   </head>
-  <body></body>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+类是创建对象的模板，要创建对象的第一件事就是创建类
+  - 类的代码块是用来设置属性的，不是什么代码都可以写
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
 </html>

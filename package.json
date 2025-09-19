@@ -9,6 +9,7 @@
   
     "dev:react01": "pnpm --filter @pesg/react01 run dev",
     "build:react01": "pnpm --filter @pesg/react01 run build",
+    "preview:react01": "pnpm --filter @pesg/react01 run preview",
     "cf-deploy:react01": "pnpm --filter @pesg/react01 run cf-deploy",
 
     "dev:worker01": "pnpm --filter @pesg/worker01 run dev",

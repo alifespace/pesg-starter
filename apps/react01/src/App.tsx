@@ -10,7 +10,9 @@ import SignIn from "./pages/SignIn";
 import WorkInProgress from "./pages/WorkInProgress";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "@/pages/Dashboard";
+import ShadcnTest01 from "@/pages/shadcn/test01";
+import TailwindcssTest01 from "@/pages/tailwindcss/test01";
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
         {/* 将来的所有新页面路由也都添加在这里面，
           它们将自动拥有顶部的菜单栏。
         */}
+        <Route path="/shadcn/test01" element={<ShadcnTest01 />} />
+        <Route path="/twc/test01" element={<TailwindcssTest01 />} />
       </Route>
     </Routes>
   );

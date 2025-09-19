@@ -9,19 +9,20 @@
     <script>
       class Person {
         /*
-          自带严格模式
+          自带严格模式，自带 use strict;
         */
-        name;
+        name;  // 实例属性，只能通过对象来访问, p1.name
         age;
 
-        static test = "test静态属性"; // 静态属性只能通过类来访问
+        static test = "test静态属性"; // 静态属性（类属性）只能通过类来访问，Person.test
 
         introMyself() {
           console.log(this.name);
         }
       }
 
-      p1 = new Person();
+      console.log(Person.test);
+      p1 = new Person();  // 调用构造函数来创建对象
       p1.name = "孙悟空";
 
       p2 = new Person();
@@ -37,14 +38,8 @@
   <body>
     <div id="md-content"></div>
     <pre id="md-source" hidden>
-使用object创建对象的问题
-  - 无法区分不同类型的对象
-  - 批量创建很困难
-
-js中可以通过class来解决
-  - 类是创建对象的模板
-  - 定义后可以通过类创建同类对象
-  - 可以通过InstanceOf检查某个对象是不是属于一个类
+类是创建对象的模板，要创建对象的第一件事就是创建类
+  - 类的代码块是用来设置属性的，不是什么代码都可以写
     </pre>
 
     <script>
