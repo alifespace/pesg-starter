@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>类</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
     <script>
       /*
             使用object创建对象的问题
@@ -50,5 +52,24 @@
       console.log(p1 instanceof Person);
     </script>
   </head>
-  <body></body>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+使用object创建对象的问题
+  - 无法区分不同类型的对象
+  - 批量创建很困难
+
+js中可以通过class来解决
+  - 类是创建对象的模板
+  - 定义后可以通过类创建同类对象
+  - 可以通过InstanceOf检查某个对象是不是属于一个类
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
 </html>

@@ -1,0 +1,33 @@
+!<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的复制</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      const arr1 = ["孙悟空", "猪八戒", "沙和尚", "唐僧", "白骨精"];
+      const arr2 = arr1;
+
+      arr1[0] = "牛魔王";
+      console.log(arr1, arr2);
+
+      arr1[0] = "孙悟空";
+      const arr3 = arr1.slice();
+      console.log("arr1 vs. arr2: ", arr1 === arr2);
+      console.log("arr1 vs. arr3: ", arr1 === arr3);
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden></pre>
+
+    <script>
+        const eID = document.getElementById("md-source");
+        const mdText = eID.textContent.trim();
+        document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>
