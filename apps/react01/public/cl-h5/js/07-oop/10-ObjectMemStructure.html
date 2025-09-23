@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>对象的内存结构</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      class Person {
+        name = "孙悟空";
+        age = 18;
+        gender = "男";
+
+        sayHello() {
+          console.log("我是：", this.name);
+        }
+
+        sayHello1 = () => {
+          console.log("我是：", this.name);
+        };
+      }
+
+      const p1 = new Person();
+      console.log(p1);
+      console.log(p1.sayHello);
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+对象存储属性的区域实际上有两个：
+1. 对象自身（实例属性）
+  - 比如直接通过对象所添加的属性，会位于对象自身中；
+  - 在类中通过 x=y 的形式添加的属性，位于对象自身之中；
+2. 对象的原型（prototype）
+  - 对象中还有一些内容，会存储在原型之中；
+  - 在对象中，会有一个属性__proto__，用来储存原型对象；
+  - 原型对象也负责为对象存储属性：
+    - 当我们访问对象中的属性时，会优先访问对象的自身属性；
+    - 如果找不到对象的自身属性，会访问原型对象的属性；
+  - 会添加到原型对象中的情况：
+    1. 在类中通过xxx() {}方式添加的方法，位于原型中；
+    2. 主动向原型中添加的属性和方法；
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

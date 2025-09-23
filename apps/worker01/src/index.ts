@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { createClient, User } from "@supabase/supabase-js";
-import { keepSbAlive } from "./routes/rt-keep-sb-alive"; // 导入您修改后的 Hono 风格函数
+import { keepSbAlive } from "@/routes/v1/keep-sb-alive"; // 导入您修改后的 Hono 风格函数
 import rtestRoute from "./routes/rtest/rtest";
 
 // 步骤 2: 更新 Env 类型定义
@@ -79,8 +79,6 @@ app.post("/v1/keep-sb-alive", keepSbAlive);
 app.get("/rtest/01", (c) => {
   return c.json({ message: "Hello Hono from /test/01!" });
 });
-
-
 
 // 您可以继续添加其他路由
 // app.get("/get-users", getUsers);

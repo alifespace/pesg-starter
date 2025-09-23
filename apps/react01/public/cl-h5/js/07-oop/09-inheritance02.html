@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+            sayHello() {
+                console.log("动物在叫...");
+            }
+        }
+
+        class Dog extends Animal{
+          constructor(name, age) {
+            super(name);
+            this.age = age;
+          }
+
+          sayHello() {
+            super.sayHello();
+            console.log("汪汪汪...");
+          }
+        }
+
+        class Cat extends Animal {
+          sayHello() {
+            console.log("喵喵喵...");
+          }
+        }
+
+        const dog1 = new Dog("旺财", 13);
+        const cat1 = new Cat("汤姆");
+
+        dog1.sayHello();
+        console.log(dog1);
+        cat1.sayHello();
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+继承
+  - 可以通过extends关键字来完成继承
+  - 当一个类继承另外一个类，相当于将一个类的代码复制到子类
+  - 继承发生时，被继承的类称为父类（超类），继承的类称为子类
+  - 通过继承我们可以减少重复的代码，可以在不修改一个类的情况下进行扩展
+  - 在子类中可以创建同名函数，此时会重写父类的方法
+  - 如果重写构造函数，第一行必须是super()
+  - 在方法中，可以调用父类的方法 super.sayHello()
+  - OCP开放封闭原则
+    - 程序应该对修改关闭，对扩展开放
+    
+类的三个特征
+  - 封装，提供安全性
+  - 继承，提供可扩展性
+  - 多态，提供灵活性
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

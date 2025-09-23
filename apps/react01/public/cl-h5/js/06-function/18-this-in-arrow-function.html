@@ -4,29 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>箭头函数中的this</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
     <script>
-      /*
-            箭头函数中的this
-                - 箭头函数没有自己的this，箭头函数的this是箭头函数的外面的this
-                - 箭头函数和调用方式无关
-                - 箭头函数的this是箭头函数的外面的this: 看箭头函数是如何被访问的
-
-            总括来说
-              - 箭头函数的this，指向的程序中的语义能访问到的；
-              - 普通函数的this，指的是调用方法
-                - 直接调用就是window
-                - 方法调用就是对象
-      */
       fn1 = function () {
-        console.log("fn1：", this);
+        console.log("fn1：", this); // window
       };
 
       fn2 = () => {
-        console.log("fn2：", this);
+        console.log("fn2：", this); // window
       };
 
       fn3 = function () {
-        console.log("fn3：", this);
+        console.log("fn3：", this); // window
       };
 
       fn1();
@@ -64,7 +54,7 @@
           t2(); // t()以箭头函数形式调用，所以this指向obj1
         },
       };
-      obj1.fn3();
+      obj1.fn3(); // object
       obj1.fn4();
       obj1.fn5();
       obj1.fn6();
@@ -73,5 +63,28 @@
       obj1.fn8();
     </script>
   </head>
-  <body></body>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+
+箭头函数中的this
+  - 箭头函数没有自己的this，箭头函数的this是箭头函数的外面的this
+  - 箭头函数和调用方式无关
+  - 箭头函数的this是箭头函数的外面的this: 看箭头函数是如何被访问的
+
+总括来说
+- 箭头函数的this，指向的程序中的语义能访问到的函数（就是箭头函数能够找到最接近的外层函数的this）；
+- 普通函数的this，指的是调用方法
+  - 直接调用就是window
+  - 方法调用就是对象
+
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>构造函数</title>
+    <script>
+      class Person {
+        name;
+        age;
+        gender;
+
+        // 构造函数
+        constructor(name, age, gender) {
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+        }
+
+        sayHello() {
+          console.log(this.name);
+        }
+      }
+
+      const p1 = new Person("孙悟空", 18, "男");
+      const p2 = new Person("猪八戒", 20, "男");
+      const p3 = new Person("铁扇公主", 16, "女");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+构造函数
+    - 在类中可以添加一个特殊的方法 constructor，该方法称为构造函数
+    - 构造函数会在我们调用类创建对象时执行
+        - 在构造函数中，this表示当前所创建的对象
+        - 可以在构造函数中，为实例属性赋值
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

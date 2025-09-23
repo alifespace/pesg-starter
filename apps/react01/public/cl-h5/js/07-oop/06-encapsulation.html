@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <title>封装</title>
+    <script>
+      class Person {
+        #address = "花果山"; // 使用#开头的属性变成私有属性，私有属性只能在类内部访问
+        constructor(name, age, gender) {
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+        }
+
+        get address() {
+          return this.#address;
+        }
+
+        // set name(value) {
+        //   this._name = value;
+        // }
+
+        sayHello() {
+          console.log(this.name, this.#address);
+        }
+      }
+
+      const p1 = new Person("孙悟空", 18, "男");
+      const p2 = new Person("猪八戒", 20, "男");
+      const p3 = new Person("铁扇公主", 16, "女");
+      p1.name = "唐僧"; // 如果有getter方法，没有setter方法就不能设置
+      print(p1.name, p1.address);
+      p1.address = "高老庄";
+      print(p1.name, p1.address);
+
+      console.log(p1);
+      p1.sayHello();
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+面向对象的特点：
+  封装、继承和多态
+  
+  1. 封装
+    - 对象就是一个用来存储不同属性的容器
+    - 对象不仅负责存储属性，还要负责数据的安全
+    - 直接添加到对象中的属性，并不安全，因为他们可以被任意修改
+    - 如何确保数据的安全
+      - 私有化数据（#变量名）
+        - \#将需要保护的数据设置为私有，只能在类内部使用，不能通过实例化对象在外部访问；
+      - 提供setter和getter方法来开放对数据的操作
+        - 属性设置为私有，通过 getter和setter方法来访问，可以控制访问权限
+        - 可以对属性值进行验证
+      - 实现封装的方式
+        - 属性私有化，加#
+        - 通过getter和setter方法来操作属性
+        ```javascript
+        get address() {
+          return this.#address;
+        }
+
+        set address(value) {
+          this.#address = value;
+        }
+        ```
+
+
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

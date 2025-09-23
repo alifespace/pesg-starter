@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script>
+      class Person {
+        constructor(name, age, gender) {
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+        }
+
+        sayHello() {
+          console.log(this.name);
+        }
+      }
+
+      class Dog {
+        constructor(name) {
+          this.name = name;
+        }
+
+        sayHello() {
+          console.log(this.name);
+        }
+      }
+
+      const dog1 = new Dog("旺财");
+      const p1 = new Person("孙悟空", 18, "男");
+      console.log(dog1);
+
+      /* 
+            定义一个函数，这个函数接收一个对象作为参数，输出对象名
+        */
+      function youName(obj) {
+        return obj.name;
+      }
+
+      console.log(youName(dog1));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+多态
+  - 在参数中不会检查参数的类型，所以任何数据都可以作为参数传递
+  - 要调用某个函数，无需指定类型，只要对象满足调用条件即可
+  - 多态为我们提供了灵活性
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>
