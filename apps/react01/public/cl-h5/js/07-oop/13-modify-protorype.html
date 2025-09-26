@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      class Person {
+        name = "孙悟空";
+        age = 18;
+        gender = "男";
+        __x__ = 10;
+
+        sayHello() {
+          console.log("我是：", this.name);
+        }
+      }
+
+      const p1 = new Person();
+      const p2 = new Person();
+
+      Object.getPrototypeOf(p1).run = () => {
+        console.log("我跑起来了");
+        console.log(this, this.name);
+      }
+
+      // 仅在实例中添加
+      p1.fly = () => {
+        console.log("我飞起来了");
+      }
+
+      console.log(p1);
+      console.log(p2, p2.__proto__);
+      p2.run();
+
+      console.log(p2.__proto__ === Person.prototype);
+      
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+大部分情况下，不需要修改原型对象。极特殊的情况下，会修改。
+  注意：
+    - 不要通过类的实例去修改原型
+      1. 通过一个对象影响所有的同类对象，不合适
+      2. 修改原型先要创建实例
+
+  除了通过__proto__能访问对象的原型外，还可以通过类的prototype属性，来访问实例的原型
+    - 修改原型最好通过类去修改
+    好处：
+      - 一修改就是修改所有实例的原型
+      - 无需创建实例
+
+  原则：
+    - 原型尽量不要改；
+    - 要改通过类.prototype进行修改；
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

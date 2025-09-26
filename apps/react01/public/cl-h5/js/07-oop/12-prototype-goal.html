@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+      class Person {
+        name = "孙悟空";
+        age = 18;
+        gender = "男";
+        __x__ = 10;
+
+        sayHello() {
+          console.log("我是：", this.name);
+          console.log(this);
+        }
+
+        sayHello1 = () => {
+          console.log("我是：", this.name);
+          console.log(this);
+        };
+
+        static address = "花果山";
+      }
+
+      class Dog {
+
+      }
+
+      class Animal {
+
+      }
+
+      class Cat extends Animal {
+
+      }
+
+      const p1 = new Person();
+      const p2 = new Person();
+      const p3 = new Person();
+
+      const d1 = new Dog();
+
+      const c1 = new Cat();
+
+      console.log(Person.prototype);
+      console.log(Person.__proto__);
+      console.log(p1.__proto__ === p2.__proto__);
+      // console.log(p1, p1.__proto__);
+      
+      p1.sayHello();
+      p1.sayHello1();
+
+      console.log(c1, c1.__proto__);
+
+      const obj1 = {};
+      console.log(obj1.__proto__);
+    </script>
+  </head>
+  <body>
+    <div id="md-content"></div>
+    <pre id="md-source" hidden>
+所有的同类型对象的原型对象都是同一个
+
+原型的作用：
+  - 原型相当于一个公共区域，可以被所有该类实例访问
+  - 可以将该类实例中，所有的公共属性（方法）统一存储在原型中
+    - 只需要创建一个属性，即可以被所有实例访问
+  - 继承是通过原型来实现的
+    - 当继承时，子类的原型就是一个父类的实例
+
+在对象中，有些属性是对象独有的：
+  - 对象的属性，每个对象都应该有自己的值
+  - 但有些值对于每个对象都是一样的，比如各种方法。对于这些一样的值，没有必要重复创建
+    </pre>
+
+    <script>
+      const eID = document.getElementById("md-source");
+      const mdText = eID.textContent.trim();
+      document.getElementById("md-content").innerHTML = marked.parse(mdText);
+      eID.remove();
+    </script>
+  </body>
+</html>

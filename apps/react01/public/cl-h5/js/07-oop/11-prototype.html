@@ -24,15 +24,34 @@
 
       const p1 = new Person();
       console.log(p1);
-      console.log(p1.__proto__);
+      console.log(p1.__proto__);  //不建议这么访问
+      console.log(Object.getPrototypeOf(p1));
+      console.log(Object.getPrototypeOf(p1).constructor);
     //   console.log(p1.sayHello);
+
+      const obj1 = {};
+      console.log(obj1);
+      console.log(obj1.__proto__);
+      console.log(obj1.__proto__.__proto__);
     </script>
   </head>
   <body>
     <div id="md-content"></div>
     <pre id="md-source" hidden>
 访问一个对象的原型对象
-- 对象: __proto__；
+- 对象.__proto__ = xxxx；
+- Object.getPrototypeOf(obj)
+
+原型对象的数据结构
+- 对象的数据/属性/方法；
+- constructor(): 原型对象的构造函数，对象是通过哪个类实现的
+  - 就是Person类
+
+注意
+  - 原型对象也有原型，这样就构成了一条原型链。根据对象的复杂程度不同，原型链的长度也不同
+  - 读取对象属性时，会优先使用对象自身属性，如果找不到，会在原型中找，如果整个原型链都找不到，则返回undefined
+  - 作用域链找变量的链，找不到会报错；
+  - 原型链找方法/属性的链，找不到会返回undefined;
     </pre>
 
     <script>
