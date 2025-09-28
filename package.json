@@ -6,19 +6,16 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-  
     "dev:react01": "pnpm --filter @pesg/react01 run dev",
     "build:react01": "pnpm --filter @pesg/react01 run build",
     "preview:react01": "pnpm --filter @pesg/react01 run preview",
     "cf-deploy:react01": "pnpm --filter @pesg/react01 run cf-deploy",
-
     "dev:worker01": "pnpm --filter @pesg/worker01 run dev",
+    "rdev:worker01": "pnpm --filter @pesg/worker01 run rdev",
     "cf-deploy:worker01": "pnpm --filter @pesg/worker01 run deploy",
-
     "cf-dev:basic": "pnpm --filter learning-basic run cf-dev",
     "cf-deploy:basic": "pnpm --filter learning-basic run cf-deploy:prod",
     "dev:router01": "pnpm --filter @pesg/router01 run dev",
-    
     "ne-dev:next01": "pnpm --filter=@essg/next01 run dev",
     "cf-deploy:next01": "pnpm --filter=@essg/next01 clean && pnpm --filter=@essg/next01 run build && pnpm --filter=@essg/next01 run cf-deploy",
     "nu-dev:nuxt01": "pnpm --filter @essg/nuxt01 run dev",

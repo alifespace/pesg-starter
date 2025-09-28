@@ -7,9 +7,9 @@ import MainLayout from "@/components/MainLayout"; // 请确保这个路径是正
 
 // 导入所有页面组件
 import SignIn from "@/pages/SignIn";
-import WorkInProgress from "./pages/WorkInProgress";
-import ForgotPassword from "./pages/ForgotPassword";
-import UpdatePassword from "./pages/UpdatePassword";
+import WorkInProgress from "@/pages/WorkInProgress";
+import ForgotPassword from "@/pages/ForgotPassword";
+import UpdatePassword from "@/pages/UpdatePassword";
 import Dashboard from "@/pages/Dashboard";
 import ShadcnTest01 from "@/pages/shadcn/test01";
 import TailwindcssTest01 from "@/pages/tailwindcss/test01";

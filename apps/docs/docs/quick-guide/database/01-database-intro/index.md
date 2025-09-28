@@ -1,11 +1,10 @@
-import { sqliteTable, integer, text } from "drizzle-orm/sqlite-core";
+# 数据库管理
 
-export const users = sqliteTable("users", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
-  name: text("name").notNull(),
-  email: text("email").notNull().unique(),
-});
+使用 _Drizzle_ 进行数据库管理
 
+## 使用
+
+```ts
 // 新增的 logs 表
 export const logs = sqliteTable("logs", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -19,3 +18,4 @@ export const logs = sqliteTable("logs", {
   errorStack: text("error_stack"),
   meta: text("meta"), // D1 没有原生 JSON 类型，用 TEXT 存 JSON 字符串
 });
+```

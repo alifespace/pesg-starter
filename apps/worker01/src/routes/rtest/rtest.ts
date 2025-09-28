@@ -1,11 +1,12 @@
 import { Hono } from "hono";
 // 从 v1/types.ts 导入现在已经完全有效的类型
 import type { Bindings } from "@/routes/v1/types";
+import { logJson } from "@/utils/log";
 
 const rtestRoute = new Hono<{ Bindings: Bindings }>();
 
 rtestRoute.get("/02", (c) => {
-  console.log("Request received for /rtest/02");
+  console.log("log: Request received for /rtest/02");
   return c.json({ message: "Hello Hono from /test/02!" });
 });
 
@@ -154,12 +155,20 @@ rtestRoute.put("/07", async (c) => {
 // GET /rtest/08 - 从 R2 存储桶读取并返回 JSON 文件
 rtestRoute.get("/08", async (c) => {
   const bucket = c.env["R2_BUCKET_01"];
-  console.log(bucket);
+  console.log("log:", bucket);
   const fileName = "datasets/students-info.json";
 
   try {
     const list = await bucket.list({ prefix: "datasets/" });
-    console.log(list.objects.map((o) => o.key));
+    logJson(
+      "R2 objects log:",
+      list.objects.map((o) => o.key)
+    );
+    // console.log(
+    //   "log:",
+    //   list.objects.map((o) => o.key)
+    // );
+    console.log("log:", JSON.stringify(list.objects.map((o) => o.key)));
     const object = await bucket.get(fileName);
 
     if (object == null) {
