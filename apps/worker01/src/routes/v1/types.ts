@@ -8,8 +8,9 @@
 // 它应该与您 wrangler.toml 文件中的绑定配置，以及您设置的 Secrets 完全匹配。
 export type Bindings = {
   // 来自 wrangler.toml 的基础设施绑定
-  "DB-T01": D1Database;
-  "KV-T01": KVNamespace;
+  DB_T01: D1Database;
+  KV_T01: KVNamespace;
+  R2_T01: R2Bucket;
 
   // 来自 .dev.vars (本地) 或 wrangler secret (生产) 的密钥
   SUPABASE_URL: string;

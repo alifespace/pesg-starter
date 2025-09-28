@@ -55,7 +55,7 @@ rtestRoute.get("/04", (c) => {
 // 当 GET 请求 /rtest/06 时，列出 KV 中的所有键 (或键值对)
 rtestRoute.get("/05", async (c) => {
   try {
-    const kv = c.env["KV-T01"];
+    const kv = c.env["KV_T01"];
 
     // 1. 使用 .list() 方法获取所有键的信息
     const list = await kv.list();
@@ -108,7 +108,7 @@ rtestRoute.get("/06", async (c) => {
   try {
     // 3. 访问 KV namespace 并读取数据
     //    注意：因为绑定名是 "KV-T01"，包含连字符，我们必须用方括号访问
-    const kv = c.env["KV-T01"];
+    const kv = c.env["KV_T01"];
     const value = await kv.get(key);
 
     // 4. 根据读取结果返回不同的响应
@@ -148,6 +148,29 @@ rtestRoute.put("/07", async (c) => {
   } catch (e) {
     console.error("写入 KV 时出错:", e);
     return c.json({ error: "服务器内部错误，无法写入 KV" }, 500);
+  }
+});
+
+// GET /rtest/08 - 从 R2 存储桶读取并返回 JSON 文件
+rtestRoute.get("/08", async (c) => {
+  const bucket = c.env["R2_BUCKET_01"];
+  console.log(bucket);
+  const fileName = "datasets/students-info.json";
+
+  try {
+    const list = await bucket.list({ prefix: "datasets/" });
+    console.log(list.objects.map((o) => o.key));
+    const object = await bucket.get(fileName);
+
+    if (object == null) {
+      return c.json({ error: `无法找到文件 ${fileName}` }, 404);
+    }
+
+    const studentInfo = await object.json();
+    return c.json(studentInfo);
+  } catch (e) {
+    console.error("读取文件时出错:", e);
+    return c.json({ error: "服务器内部错误，无法读取文件" }, 500);
   }
 });
 
