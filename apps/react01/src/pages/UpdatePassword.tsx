@@ -1,42 +1,58 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
 
-const UpdatePassword = () => {
+const UpdatePassword: React.FC = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // 这个useEffect用来处理从邮件链接中获取的session
+  // 从 URL hash 或 query 获取 access_token
+  const [token, setToken] = useState<string | null>(null);
+
   useEffect(() => {
-    supabase.auth.onAuthStateChange(async (event) => {
-      if (event === "PASSWORD_RECOVERY") {
-        // Supabase在URL hash中设置了恢复所需的session
-        // 这里不需要我们手动做什么，Supabase客户端会自动处理
-        // 我们可以给用户一些提示
-        setMessage("已验证邮箱，请输入您的新密码。");
-      }
-    });
+    // Supabase 会把 token 放在 URL #access_token=xxx
+    const hash = new URLSearchParams(window.location.hash.substring(1));
+    const accessToken = hash.get("access_token");
+    if (accessToken) {
+      setToken(accessToken);
+      setMessage("已验证邮箱，请输入新密码。");
+    } else {
+      setError("链接无效或已过期。");
+    }
   }, []);
 
   const handleUpdatePassword = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!token) {
+      setError("缺少访问令牌，无法更新密码。");
+      return;
+    }
+
     setError("");
     setMessage("");
     setLoading(true);
 
-    const { error } = await supabase.auth.updateUser({
-      password: password,
-    });
+    try {
+      const res = await fetch("https://api01.riplon.net/v1/updatepassword", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // 带上 token
+        },
+        body: JSON.stringify({ password }),
+      });
 
-    if (error) {
-      setError(error.message);
-    } else {
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "更新失败");
+
       setMessage("密码更新成功！即将跳转到登录页面...");
-      setTimeout(() => navigate("/signin"), 3000);
+      setTimeout(() => navigate("/signin"), 2500);
+    } catch (err: any) {
+      setError(err.message);
     }
+
     setLoading(false);
   };
 
@@ -62,14 +78,14 @@ const UpdatePassword = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
             />
           </div>
           <div>
             <button
               type="submit"
-              disabled={loading}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+              disabled={loading || !token}
+              className="w-full flex justify-center py-2 px-4 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50"
             >
               {loading ? "更新中..." : "更新密码"}
             </button>

@@ -1,7 +1,8 @@
 import { Hono } from "hono";
 // 从 v1/types.ts 导入现在已经完全有效的类型
-import type { Bindings } from "@/routes/v1/types";
+import type { Bindings } from "@/types/bindings";
 import { logJson } from "@/utils/log";
+// import type { R2Object } from "@cloudflare/workers-types";
 
 const rtestRoute = new Hono<{ Bindings: Bindings }>();
 
@@ -93,7 +94,7 @@ rtestRoute.get("/05", async (c) => {
   }
 });
 
-// 当 GET 请求 /rtest/05 时，根据 key 读取 KV 的内容
+// 当 GET 请求 /rtest/06 时，根据 key 读取 KV 的内容
 rtestRoute.get("/06", async (c) => {
   // 1. 从 URL 查询参数中获取要读取的 key
   const key = c.req.query("key");
@@ -108,7 +109,7 @@ rtestRoute.get("/06", async (c) => {
 
   try {
     // 3. 访问 KV namespace 并读取数据
-    //    注意：因为绑定名是 "KV-T01"，包含连字符，我们必须用方括号访问
+    //    注意：因为绑定名是 "KV_T01"，包含连字符，我们必须用方括号访问
     const kv = c.env["KV_T01"];
     const value = await kv.get(key);
 
@@ -138,7 +139,7 @@ rtestRoute.put("/07", async (c) => {
 
   try {
     const value = await c.req.text();
-    const kv = c.env["KV-T01"];
+    const kv = c.env["KV_T01"];
     await kv.put(key, value);
 
     return c.json({
@@ -155,20 +156,22 @@ rtestRoute.put("/07", async (c) => {
 // GET /rtest/08 - 从 R2 存储桶读取并返回 JSON 文件
 rtestRoute.get("/08", async (c) => {
   const bucket = c.env["R2_BUCKET_01"];
-  console.log("log:", bucket);
   const fileName = "datasets/students-info.json";
 
   try {
     const list = await bucket.list({ prefix: "datasets/" });
     logJson(
       "R2 objects log:",
-      list.objects.map((o) => o.key)
+      list.objects.map((o: R2Object) => o.key)
     );
     // console.log(
     //   "log:",
     //   list.objects.map((o) => o.key)
     // );
-    console.log("log:", JSON.stringify(list.objects.map((o) => o.key)));
+    console.log(
+      "log:",
+      JSON.stringify(list.objects.map((o: R2Object) => o.key))
+    );
     const object = await bucket.get(fileName);
 
     if (object == null) {

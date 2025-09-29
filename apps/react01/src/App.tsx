@@ -7,6 +7,7 @@ import MainLayout from "@/components/MainLayout"; // 请确保这个路径是正
 
 // 导入所有页面组件
 import SignIn from "@/pages/SignIn";
+import SignUp from "@/pages/SignUp";
 import WorkInProgress from "@/pages/WorkInProgress";
 import ForgotPassword from "@/pages/ForgotPassword";
 import UpdatePassword from "@/pages/UpdatePassword";
@@ -30,6 +31,9 @@ function App() {
 
         {/* 登录页路由 */}
         <Route path="/signin" element={<SignIn />} />
+
+        {/* 注册页路由 */}
+        <Route path="/signup" element={<SignUp />} />
 
         {/* 忘记密码页路由 */}
         <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "wrangler dev --env dev",
     "rdev": "wrangler dev --remote",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy -e prod"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250927.0",

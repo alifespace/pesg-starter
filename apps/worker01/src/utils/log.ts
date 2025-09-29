@@ -34,6 +34,5 @@ export function logJson(label: string, data: unknown) {
   //     )} ${label}`
   //   );
   //   console.log(`${colorize(COLORS.blue, "[JSON]")} ${label}`);
-  console.log(`${label}`);
   console.log(`${label}\n`, JSON.stringify(data, null, 2), "\n");
 }

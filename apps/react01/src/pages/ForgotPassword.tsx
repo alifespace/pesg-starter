@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { supabase } from "../supabaseClient";
 import { Link } from "react-router-dom";
 
-const ForgotPassword = () => {
+const PREFIX_API = "https://learning01.riplon.net/api";
+
+const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -14,15 +15,26 @@ const ForgotPassword = () => {
     setMessage("");
     setLoading(true);
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/update-password`,
-    });
+    try {
+      const res = await fetch(`/api/v1/forgetpassword`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    if (error) {
-      setError(error.message);
-    } else {
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "发送重置链接失败，请稍后再试。");
+      }
+
       setMessage("密码重置链接已发送，请检查您的邮箱。");
+    } catch (err: any) {
+      setError(err.message || "发生未知错误");
     }
+
     setLoading(false);
   };
 
