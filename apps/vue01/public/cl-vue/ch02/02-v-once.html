@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/frameworks/vue.global_3.5.22.js"></script>
+    <title>v-once指令</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/x-template" id="tplt">
+        <h2> {{ counter }}</h2>
+        <h3 v-once>h3: {{ counter }}</h3>
+        <div v-once>
+            <h4>{{ counter }}</h4>
+            <h4>{{ message }}</h4>
+        </div>
+        <button @click="increment">+1</button>
+    </script>
+
+    <script>
+        const myApp = {
+            template: "#tplt",
+
+            data() {
+                return {
+                    counter: 0,
+                    message: "Hello Vue3 World!"
+                }
+            },
+
+            methods: {
+                increment() {
+                    this.counter++;
+                }
+            }
+        }
+
+        Vue.createApp(myApp).mount("#app");
+    </script>
+
+</body>
+</html>

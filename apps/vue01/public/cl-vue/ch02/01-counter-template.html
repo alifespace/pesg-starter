@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/frameworks/vue.global_3.5.22.js"></script>
+    <title>基于Template的计数器</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/x-template" id="tplt">
+      <h4> {{message }} - {{isShow}} </h4>
+      <h4> {{ counter * 10 }}</h4>
+      <h4>{{ message.split(" ").join("-") }}</h4>
+      <h4>{{ getRverseMessage() }}</h4>
+      <h4>{{ isShow ? "显示" : "隐藏" }}</h4>
+      <button @click="toggle">切换控制显示</button>
+    </script>
+
+    <script>
+      const myApp = {
+        template: "#tplt",
+
+        data() {
+          return {
+            message: "Hello World",
+            counter: 100,
+            isShow: true,
+          };
+        },
+
+        methods: {
+          getRverseMessage() {
+            return this.message.split(" ").reverse().join(" ");
+          },
+          toggle() {
+            this.isShow = !this.isShow;
+          }
+        },
+      };
+
+      Vue.createApp(myApp).mount("#app");
+    </script>
+  </body>
+</html>

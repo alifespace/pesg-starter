@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/frameworks/vue.global_3.5.22.js"></script>
+    <title>v-bind指令</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/x-template" id="tplt">
+        <!-- 1. v-bind 指令的基本使用 -->
+        <img v-bind:src="imgURL" alt="Vue Logo">
+        <a v-bird:href="link">百度一下</a>
+
+        <img :src="imgURL" alt="Vue Logo">
+    </script>
+    <script>
+        const myApp = {
+            template: "#tplt",
+            data() {
+                return {
+                    imgURL: "http://v2.cn.vuejs.org/images/logo.svg",
+                    link: "http://www.baidu.com"
+                }
+            },
+            methods: {
+
+            }
+        }
+
+        Vue.createApp(myApp).mount("#app");
+    </script>
+</body>
+</html>
