@@ -29,6 +29,7 @@ app.use(
     origin: [
       "http://localhost:3552",
       "http://localhost:4173",
+      "http://localhost:5173",
       "https://riplon.net",
       "https://learning01.riplon.net",
     ],

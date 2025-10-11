@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6语法</title>
+  </head>
+  <body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <button>按钮6</button>
+    <script>
+      {
+        var name1 = "why";
+        console.log(name1);
+      }
+      console.log(name1);
+
+      var btns = document.getElementsByTagName("button");
+      // for (var i=0; i<btns.length; i++) {
+      //   btns[i].addEventListener('click', function() {
+      //     console.log(`第 ${i+1} 个按钮被点击了`, i);
+      //   })
+      // }
+
+      // ES5中的解决方案
+      /**
+       *  正常闭包的四个要求
+       *  1. 有函数嵌套；
+       *  2. 内部函数引用外部函数作用域中的变量；
+       *  3. 外部函数返回内部函数；
+       *  4. 创建一个对象函数，让其长期驻留；
+       *  异步调用 addEventListener 算是同时满足 4
+       *  立即函数算是满足 3
+       */
+      for (var i = 0; i < btns.length; i++) {
+        (function(i) {
+          btns[i].addEventListener('click', function(){
+            console.log(`第${i+1}个按钮被点击了`, i);
+          })
+        })(i)
+      }
+
+      let name = '孙悟空';
+      let age = 18;
+
+      obj1 = {
+        name,
+        age
+      }
+      
+      console.log(obj1);
+      name = '猪八戒';
+      console.log(obj1);
+
+      const obj2 = {
+        run() {
+          console.log('猪八戒在跑');
+        }
+      }
+
+      obj2.run();
+    </script>
+  </body>
+</html>

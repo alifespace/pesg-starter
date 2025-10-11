@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用数组进行class绑定</title>
+  <script src="/frameworks/vue.global_3.5.22.js"></script>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+    <script type="text/x-template" id="tplt">
+      {{ message }}
+      <h2 :class='["active", "line"]'> {{ message }} </h2>
+      <h2 :class='getClasses()'>{{ message }}</h2>
+    </script>
+    <script>
+      const myApp = {
+        template: "#tplt",
+        data() {
+          return {
+            message: "Hello Vue!",
+            isActive: true,
+          };
+        },
+        methods: {
+          getClasses() {
+            return ["active", "line"];
+          }
+        }
+      };
+  
+      const vm = Vue.createApp(myApp).mount("#app");
+    </script>
+</body>
+</html>

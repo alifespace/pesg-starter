@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/frameworks/vue.global_3.5.22.js"></script>
+  <title>v-on介绍</title>
+</head>
+<body>
+<div id="app"></div>
+  <script type="text/x-template" id="tplt">
+    <h2> {{ message }} </h2>
+    <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>
+    <button @click="method1">按钮1</button>
+    <!-- 如果没有传入参数，默认将浏览器产生的event事件对象作为参数，传入被调用的方法-->
+    <button @click="method2">按钮2</button>
+    <button @click="method3('abc', $event)">按钮3</button>
+    <!-- 事件冒泡-->
+    <div @click="divClick">
+      aaaaa<button @click.stop="btn4Click">按钮4</button>
+    </div>
+    <!-- 阻止默认事件-->
+     <br />
+     <form action="baidu.com">
+      <input type="submit" value="提交" @click.prevent="submitClick">
+     </form>
+
+     <!-- 键盘点击-->
+    <input type="text" @keyup.enter="keyUp">
+
+    <button @click.once="onceClick">只有一次</button>
+  </script>
+  <script>
+    const myApp = {
+      template: '#tplt',
+      data() {
+        return {
+          message: 0,
+        };
+      },
+      computed: {},
+      methods: {
+        add() {
+          this.message++;
+        },
+        sub() {
+          this.message--;
+        },
+        method1() {
+          alert('按钮1被点击了');
+        },
+        method2(parm1) {
+          alert(parm1);
+        },
+        method3(abc, event) {
+          console.log(abc, event);
+        },
+        divClick() {
+          console.log('div被点击了');
+        },
+        btn4Click() {
+          console.log('按钮4被点击了');
+        },
+        submitClick() {
+          console.log('提交按钮被点击了');
+        },
+        keyUp() {
+          console.log('键盘被点击了');
+        },
+        onceClick() {
+          console.log('只有一次被点击了');
+        }
+      }
+    };
+
+    const vm = Vue.createApp(myApp).mount('#app');
+  </script>
+</body>
+</html>

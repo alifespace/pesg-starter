@@ -1,0 +1,15 @@
+{
+  "folders": [
+    { "path": "." },
+    { "path": "apps/worker01" },
+    { "path": "apps/vue01" },
+    { "path": "apps/router01" }
+  ],
+  "settings": {
+    // 全局推荐设置
+    "files.exclude": {
+      "**/node_modules": true
+    },
+    "typescript.enablePromptUseWorkspaceTsdk": true
+  }
+}

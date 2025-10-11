@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/frameworks/vue.global_3.5.22.js"></script>
+  <title>使用v-bind绑定样式-数组语法</title>
+</head>
+<body>
+  <div id="app"></div>
+    <script type="text/x-template" id="tplt">
+      {{ message }}
+      <h2 :style="[finalSize, finalColor]"> {{ message }} </h2>
+    </script>
+    <script>
+      const myApp = {
+        template: "#tplt",
+        data() {
+          return {
+            message: 'Hello Vue!',
+            finalSize: {fontSize: '150px'},
+            finalColor: {color: 'red'},
+          };
+        },
+        methods: {}
+      };
+  
+      const vm = Vue.createApp(myApp).mount("#app");
+    </script>
+</body>
+</html>

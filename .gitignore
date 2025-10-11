@@ -1,5 +1,6 @@
 # Git that manages the entire monorepo repository
-
+npm_global.txt
+install.md
 # ignore tools package
 .venv/
 **/.vscode/

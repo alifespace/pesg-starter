@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>计数器</title>
+</head>
+<body>
+  <script src="/frameworks/vue.global_3.5.22.js""></script>
+  <div id="app"></div>
+
+  <script type="text/x-template" id="tplt">
+    <h2> {{ counter }}</h2>
+      <button @click="add">+1</button>
+      <button @click="sub">-1</button>
+  </script>
+
+  <script>
+    const myApp = {
+      template: "#tplt",
+      data() {
+              return {
+                  counter: 0
+              }
+          },
+          // 方法和一个对象实例挂钩，函数在顶层中
+          methods: {
+              add() {
+                  this.counter++
+              },
+              sub() {
+                  this.counter--
+              }
+          },
+
+          beforeCreate() {
+              console.log("beforeCreate")
+          },
+
+          created() {
+              console.log("created")
+          },
+
+          updated() {
+              console.log("updated")
+          }
+      }
+      vm = Vue.createApp(myApp).mount("#app")
+  </script>
+
+</body>
+</html>

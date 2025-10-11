@@ -186,4 +186,28 @@ rtestRoute.get("/08", async (c) => {
   }
 });
 
+rtestRoute.get("/09", async (c) => {
+  try {
+    const apiUrl = "https://fakestoreapi.com/products";
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const simplified = data.map((p: any) => ({
+      id: p.id,
+      title: p.title,
+      price: p.price,
+      image: p.image,
+    }));
+
+    return c.json({
+      message: "成功从 FakeStoreAPI 获取数据",
+      count: simplified.length,
+      data: simplified,
+    });
+  } catch (e) {
+    console.error("外部 API 调用错误:", e);
+    return c.json({ error: "无法访问 FakeStoreAPI" }, 500);
+  }
+});
+
 export default rtestRoute;

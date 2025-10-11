@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/frameworks/vue.global_3.5.22.js"></script>
+  <title>在style中使用对象动态绑定</title>
+</head>
+<body>
+  <div id="app"></div>
+    <!--JD的Mobile案例-->
+    <script type="text/x-template" id="tplt">
+      {{ message }}
+      <h2 :style="{'font-Size': '50px', color: 'red'}"> {{ message }} </h2>
+      <h2 :style="{fontSize: finalSize}">{{ message }}</h2>
+      <h2 :style="{'font-size': nFinalSize +'px'}">{{ message }}</h2>
+    </script>
+    <script>
+      const myApp = {
+        template: "#tplt",
+        data() {
+          return {
+            message: 'Hello Vue!',
+            finalSize: '100px',
+            nFinalSize: 100,
+          };
+        },
+        methods: {}
+      };
+  
+      const vm = Vue.createApp(myApp).mount("#app");
+    </script>
+</body>
+</html>

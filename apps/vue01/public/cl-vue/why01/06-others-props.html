@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/frameworks/vue.global_3.5.22.js"></script>
+  <style>
+    [v-cloak] {
+      background-color: red !important;
+    }
+  </style>
+  <title>其他属性</title>
+</head>
+<body>
+  <div id="app" v-cloak>Hello</div>
+    <script type="text/x-template" id="tplt">
+     <h2> {{ message }} </h2>
+      <h2 v-once> {{ message }} </h2>
+      <h2> {{ url }} </h2>
+      <h2 v-html="url"></h2>
+      <h2 v-text="url"></h2>
+      <h2 v-pre>{{ message }}</h2>
+      <h2>{{ message }}</h2>
+    </script>
+    <script>
+      setTimeout(function () {
+        const myApp = {
+          template: "#tplt",
+          data() {
+            return {
+              message: "Hello Vue!",
+              url: '<a href="https://www.baidu.com">百度一下</a>',
+            };
+          },
+          methods: {}
+        };
+    
+        const vm = Vue.createApp(myApp).mount("#app");
+      }, 1000);
+    </script>
+</body>
+</html>

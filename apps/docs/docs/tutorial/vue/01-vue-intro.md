@@ -13,3 +13,27 @@
 3. 前端路由技术
 4. 状态管理
 5. 虚拟 DOM
+
+## 引入方式
+
+### CDN 方式
+
+1. 包括生产环境和开发环境
+
+### 下载方式
+
+1. 开发环境：https://vuejs.org/js/vue.js
+2. 生产环境：https://vuejs.org/js/vue.min.js
+
+### npm 安装
+
+## Vue 的生命周期
+
+1. beforeCreated
+2. created
+3. beforeMount
+4. mounted
+5. beforeUpdate
+6. updated
+7. beforeDestroy
+8. destroyed

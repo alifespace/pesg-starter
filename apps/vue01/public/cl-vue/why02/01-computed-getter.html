@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/frameworks/vue.global_3.5.22.js"></script>
+  <title>计算属性的复杂操作</title>
+</head>
+<body>
+  <div id="app"></div>
+    <script type="text/x-template" id="tplt">
+      {{ message }}
+      <h2>总价格：{{totalPrice}}</h2>
+      <h2>{{ fullName }}</h2>
+    </script>
+    <script>
+      const myApp = {
+        template: '#tplt',
+        data() {
+          return {
+            message: 'Hello Vue!',
+            books: [
+              {id: 110, title: 'Unix编程艺术', price: 119},
+              {id: 111, title: 'Javascript高级程序设计', price: 129},
+              {id: 112, title: '代码大全', price: 29},
+              {id: 113, title: '深入理解计算机原理', price: 45.32},
+              {id: 114, title: '现代操作系统', price: 87},
+            ],
+            firstName: '孙',
+            lastName: '悟空',
+          };
+        },
+        computed: {
+          totalPrice() {
+            let total = 0;
+            for (let book of this.books) {
+              total += book.price;
+            }
+            return total;
+          },
+          // 一般计算属性只有getter方法
+          fullName: {
+            // return this.firstName + ' ' + this.lastName;
+            set: function(value) {
+              console.log('setter...');
+              const names = value.split(' ');
+              this.firstName = names[0];
+              this.lastName = names[1];
+              console.log(this.firstName, this.lastName);
+            },
+            get: function() {
+              return this.firstName + ' ' + this.lastName;
+            }
+          },
+        },
+        methods: {},
+      };
+  
+      const vm = Vue.createApp(myApp).mount('#app');
+    </script>
+</body>
+</html>

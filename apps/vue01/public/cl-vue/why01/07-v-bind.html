@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-bind属性</title>
+  <script src="/frameworks/vue.global_3.5.22.js"></script>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+  </div>
+  <!-- <img src="https://m.media-amazon.com/images/I/71Kx6GUFj6L._AC_SX569_.jpg" alt=""> -->
+    <script type="text/x-template" id="tplt">
+      <h2> {{ message }} </h2>
+      <img :src="imgURL" alt="" />
+      <a :href="aHref">百度一下</a>
+      <h2 :class='cActive'> {{ message }} </h2>
+      <h2 :class='{active: isActive, line: isLine}'>{{ message }}</h2>
+      <button @click="changeColor">按钮</button>
+    </script>
+    <script>
+      const myApp = {
+        template: "#tplt",
+        data() {
+          return {
+            message: "Hello Vue!",
+            imgURL: "https://m.media-amazon.com/images/I/71Kx6GUFj6L._AC_SX569_.jpg",
+            aHref: "https://www.baidu.com",
+            cActive: 'active',
+            isActive: true,
+            isLine: true,
+          };
+        },
+        methods: {
+          changeColor() {
+            this.isActive = !this.isActive
+          }
+        }
+      };
+  
+      const vm = Vue.createApp(myApp).mount("#app");
+    </script>
+</body>
+</html>

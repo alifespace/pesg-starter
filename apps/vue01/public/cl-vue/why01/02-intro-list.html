@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/frameworks/vue.global_3.5.22.js""></script>
+    <title>数组展示</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/x-template" id="tplt">
+        <ul>
+            <li v-for="item in movies">{{item}}</li>
+        </ul>
+        {{movies}}
+    </script>
+
+    <script>
+        const myApp = {
+            template: "#tplt",
+            data() {
+                return {
+                    movies: ['电影1', '电影2', '电影3']
+                }
+            }
+        }
+        vm = Vue.createApp(myApp).mount("#app")
+    </script>
+</body>
+</html>
