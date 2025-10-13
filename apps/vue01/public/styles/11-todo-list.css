@@ -5,11 +5,39 @@ body {
 .todo-grid,
 .input-grid {
   display: grid;
-  grid-template-columns: 200px 100px 100px;
+  grid-template-columns: 200px 150px 100px;
   column-gap: 10px;
   row-gap: 5px;
+  align-items: center stretch;
 }
 
 .input-grid {
   margin-bottom: 10px;
+}
+
+.name-input,
+.due-date-input {
+  font-size: 15px;
+  padding: 6px;
+}
+
+.todo-item-name,
+.todo-item-due-date {
+  padding: 12px;
+}
+
+.btn-add {
+  background-color: green;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: rgb(88, 17, 17);
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }

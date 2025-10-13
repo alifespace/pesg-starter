@@ -12,12 +12,16 @@
       <input
         type="text"
         placeholder="代办事项"
-        class="js-todoText"
+        class="js-todoText name-input"
         onkeyup="textKeyup(event)"
       />
 
-      <input type="date" class="js-due-date" aria-label="选择日期" />
-      <button onclick="addTodo(); renderTodo();">添加</button>
+      <input
+        type="date"
+        class="js-due-date due-date-input"
+        aria-label="选择日期"
+      />
+      <button class="btn-add" onclick="addTodo(); renderTodo();">添加</button>
     </div>
 
     <div class="js-paragraph1 todo-grid"></div>
