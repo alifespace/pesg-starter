@@ -35,8 +35,7 @@ function renderTodo() {
 
   arrTodo.forEach((item, index) => {
     // strP1 += `<p>${item.name} - ${item.dueDate} <button onclick="deleteTodo(${index})">删除</button></p>`;
-    strP1 += `<div class="todo-item-name">${item.name}</div>
-      <div class="todo-item-due-date">${item.dueDate}</div>
+    strP1 += `<div class="todo-item-name">${item.name}</div><div class="todo-item-due-date">${item.dueDate}</div>
       <button class="btn-delete" onclick="deleteTodo(${index})">删除</button>`;
   });
 

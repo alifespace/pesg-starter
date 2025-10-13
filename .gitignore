@@ -17,7 +17,7 @@ install.md
 
 **/wrangler.toml
 **/test01.http
-**/javascript-course
+# **/javascript-course
 # for python
 
 **/__pycache__
