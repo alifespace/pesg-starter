@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/11-todo-list.css" />
+    <title>我的代办事项</title>
+  </head>
+  <body>
+    <p>我的代办事项练习1</p>
+    <div class="input-grid">
+      <input
+        type="text"
+        placeholder="代办事项"
+        class="js-todoText"
+        onkeyup="textKeyup(event)"
+      />
+
+      <input type="date" class="js-due-date" aria-label="选择日期" />
+      <button onclick="addTodo(); renderTodo();">添加</button>
+    </div>
+
+    <div class="js-paragraph1 todo-grid"></div>
+    <script src="scripts/ssd11-todo.js"></script>
+    <!-- <script>
+      function addTodo() {
+        console.log("click1");
+        // const todoText = document.querySelector(".js-todoText").value;
+        // console.log(todoText);
+      }
+    </script> -->
+  </body>
+</html>

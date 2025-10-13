@@ -10,6 +10,7 @@
     "files.exclude": {
       "**/node_modules": true
     },
-    "typescript.enablePromptUseWorkspaceTsdk": true
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "liveServer.settings.multiRootWorkspaceName": "pesg-starter"
   }
 }

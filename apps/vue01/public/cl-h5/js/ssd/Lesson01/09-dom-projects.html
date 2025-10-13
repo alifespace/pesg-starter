@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Projects</title>
+  </head>
+  <body>
+    YouTube Subscribe Button <br />
+    <button class="btn01" onclick="btnsub()">Subscribe</button>
+    <script>
+        function btnsub() {
+          const btn01 = document.querySelector('.btn01');
+          if(btn01.innerText === 'Subscribed') {
+            btn01.innerHTML = 'Subscribe';
+        } else {
+          btn01.innerHTML = 'Subscribed';
+        }
+      }
+    </script>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders upder $40 = +$10 shipping.</p>
+    <p>Orders over $40 = Free shipping.</p>
+    <input type="text" placeholder="请输入数值" class="js-text" />
+    <button onclick="calcResult()">Calculate</button>
+    <p class="js-result"></p>
+
+    <script>
+      function calcResult() {
+        const text = document.querySelector('.js-text');
+        const result = document.querySelector('.js-result');
+
+        if (text.value >= 40) {
+          result.innerHTML = `运费：${text.value}`;
+        } else if (text.value < 40) {
+          result.innerHTML = `运费：${Number(text.value) + 10}`;
+        } else {
+        }
+      }
+    </script>
+  </body>
+</html>

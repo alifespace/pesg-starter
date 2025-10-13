@@ -94,6 +94,32 @@ app.get("/v1/me", (c) => {
   });
 });
 
+// --- KV 操作示例 ---
+// 写入或更新一个 KV 值
+// 您可以通过 POST 请求，例如：POST /api/v1/kv/my-key  并在请求体中附带 {"value": "hello world"}
+app.post("/api/v1/kv/:key", async (c) => {
+  const key = c.req.param("key");
+  const body = await c.req.json<{ value: string }>();
+
+  if (!body.value) {
+    return c.json({ error: "Missing 'value' in request body" }, 400);
+  }
+
+  await c.env.KV_T01.put(key, body.value);
+  return c.json({ success: true, key, value: body.value });
+});
+
+// 读取一个 KV 值
+// 您可以通过 GET 请求，例如：GET /api/v1/kv/my-key
+app.get("/api/v1/kv/:key", async (c) => {
+  const key = c.req.param("key");
+  const value = await c.env.KV_T01.get(key);
+
+  return value === null
+    ? c.json({ error: "Key not found" }, 404)
+    : c.json({ key, value });
+});
+
 // 全局错误处理
 app.onError((err, c) => {
   console.error(`Error: ${err.message}`);
