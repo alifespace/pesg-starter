@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let var1 = var2 = var3 = 'test';
+
+      console.log(var2);
+
+      // let class = "Error";   该语句将导致所有执行被终止
+    </script>
+
+    <script>
+      // let class = "Error";   不影响到上面语句执行的效果
+      console.log(var4);
+
+      var var4 = "variable 4";  // 变量提升
+      // let var4 = "variable 4";
+    </script>
+
+    <script>
+      if (true) {
+        console.log("abc");
+      }
+
+      function fn1() {
+        if(false) {
+          var var5 = "Variable 5";  // 变量提升
+        }
+        console.log(var5);
+      }
+
+      fn1();
+    </script>
+
+    <script>
+      let var6 = "Variable 6";        // 这个时候不会报错
+      function fn2() {
+        console.log(var6);
+        // let var6 = "Variable 6";     // 这个时候会报错
+      }
+
+      fn2();
+
+      function fn3() {
+        var7 = "variable 7";   // var7成为了一个全局变量
+        // 为了防止全局污染，一定要声明变量
+      }
+
+      fn3();   //需要调用该全局函数
+      console.log(var7);
+    </script>
+
+    <script>
+      // let定义的变量有块作用域
+      let var8 = 99;
+
+      for (let var8 = 0; var8 < 5; var8++) {
+        console.log(var8);
+      }
+
+      console.log(var8);
+    </script>
+
+    <script>
+      const WEB = "microsoft.com"
+    </script>
+
+    <script>
+      WEB = "apple.com";
+      console.log(WEB);
+    </script>
+  </body>
+</html>
