@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. 编写位置：编写在html内部 -->
+    <a href="#" onclick="alert('百度一下')">百度一下</a>
+    <a href="javascript: alert('再来百度一下')">百度一下</a>
+
+    <!-- 2. 编写位置：编写在script元素之内 -->
+    <a class="cGoogle" href="#">Google</a>
+    <script>
+      // alert("Hello JS World!");
+
+      elGoogle = document.querySelector(".cGoogle")
+      elGoogle.onclick = function () {
+        alert("Google is clicked.")
+      }
+    </script>
+
+    <!-- 3. 编写位置：编写在一个独立的文件中 -->
+    <a href="#" class="cBing">Bing一下</a>
+    <script src="js/myjs.js"></script>
+  </body>
+</html>
