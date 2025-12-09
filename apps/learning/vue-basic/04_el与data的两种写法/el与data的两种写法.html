@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">{{msg}}</div>
+
+    <script>
+      // el 的两种写法
+      /*
+      const v = new Vue({
+        // el: "#root",
+        data: {
+          msg: "Vue World",
+        }
+      })
+
+      // v.$mount("#root");
+      setTimeout(() => {
+        v.$mount("#root")
+      }, 1000)
+      */
+
+      // data 的两种写法
+      new Vue({
+        el: "#root",
+        data: function() {
+          console.log(this);
+          return {
+          msg: "Vue World",
+          }
+        }
+      })
+
+      console.log(4.3 % 1)
+      console.log(typeof 4.3 == "number");
+      console.log(typeof 4.3 === "number");
+      console.log(window.Debug);
+      console.log(Debug);
+      // Vue 所管理的函数，不能使用箭头函数
+    </script>
+  </body>
+</html>
