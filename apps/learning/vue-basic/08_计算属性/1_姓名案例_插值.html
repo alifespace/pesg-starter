@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      姓：<input
+        type="text"
+        v-model:value="familyName"
+        name=""
+        id=""
+        @keyup:showFamilyN
+      />
+      <br />
+      名：<input type="text" :value="givenName" name="" id="" />
+      名字：{{familyName}} - {{givenName}}
+    </div>
+  </body>
+  <script>
+    Vue.config.productionTip = false
+
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        familyName: "A",
+        givenName: "B"
+      }
+    })
+  </script>
+</html>
