@@ -7,11 +7,14 @@
     <script src="../js/vue.js"></script>
   </head>
   <body>
+    <!-- 
+    
+    -->
     <div id="root">
       姓：<input type="text" v-model:value="familyName" name="" />
       <br />
       名：<input type="text" v-model:value="givenName" name="" id="" />
-      名字：{{familyName.slice(0,3)}} - {{givenName}}
+      名字：{{fullName}}
     </div>
   </body>
   <script>
@@ -22,6 +25,14 @@
       data: {
         familyName: "张",
         givenName: "三"
+      },
+      methods: {
+      },
+      computed: {
+        // 如果只有get功能，可以简写如下
+        fullName() {
+          return this.familyName + this.givenName;
+        },
       }
     })
   </script>
