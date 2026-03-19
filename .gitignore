@@ -1,4 +1,19 @@
-.venv/
-__pycache__/
-*.pyc
-*.env
+# Python
+**/.venv/
+**/__pycache__/
+node_modules/
+**/*.pyc
+**/*.env
+
+# Jupyter
+**/.ipynb_checkpoints/
+
+# Nodejs
+**/node_modules/
+**/.env.local
+**/.dev.vars
+
+# OS / Editor
+.vscode/
+.DS_Store
+Thumbs.db
