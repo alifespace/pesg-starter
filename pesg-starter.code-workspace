@@ -1,0 +1,25 @@
+{
+  "folders": [
+    {
+      "name": "🧪 Learning - Python",
+      "path": "learning/python",
+    },
+    {
+      "name": "🧪 Learning - NodeJS",
+      "path": "learning/nodejs",
+    },
+    {
+      "name": "🧪 Learning - SQL",
+      "path": "learning/sql",
+    },
+    {
+      "name": "🧪🤖🌐 Learning - worker",
+      "path": "learning/worker",
+    },
+    {
+      "name": "pesg-starter",
+      "path": ".",
+    },
+  ],
+  "settings": {},
+}
