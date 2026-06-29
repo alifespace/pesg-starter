@@ -19,3 +19,5 @@ print(f"MA250：{latest['MA250']}")
 import sys
 print(sys.executable)
 print(sys.version)
+
+import 
