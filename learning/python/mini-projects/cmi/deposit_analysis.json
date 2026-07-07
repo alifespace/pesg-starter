@@ -1,17 +1,17 @@
 [
   {
-    "document_name": "金城项目英国OF_202505.pdf",
-    "client_name": "江苏⾦珹智能存储设备有限公司",
-    "has_deposit_clause": true,
-    "deposit_type": "Not Specified",
+    "document_name": "OnSemi-DICT - Order Form (GTC) - 06162026 Updated.doc",
+    "client_name": "Semiconductor Components Industries LLC",
+    "has_deposit_clause": false,
+    "deposit_type": "Nil",
     "deposit_currency": "",
     "deposit_amount": null,
     "deposit_amount_text": "",
-    "payment_terms": "Payment due 10 days; milestone payments: 10% before entry, 20% within two weeks, 60% at 80% completion, 10% after acceptance",
-    "monthly_charge": null,
-    "one_off_charge": 2557600.0,
-    "currency": "CNY",
-    "deposit_conditions": "CMI may require a security deposit in specified form; value can be varied within 7 days if payment issues or financial changes; deposit applied to unpaid charges; must be restored if applied; released after full payment within 30 days of termination; does not relieve payment obligation",
-    "remarks": ""
+    "payment_terms": "30 days",
+    "monthly_charge": 14850,
+    "one_off_charge": 0,
+    "currency": "USD",
+    "deposit_conditions": "",
+    "remarks": "Deposit type specified as Nil; no security deposit required as per checkbox. Security requirement clauses in remarks detail conditions for deposit variation and application, but not applicable since deposit is Nil."
   }
 ]

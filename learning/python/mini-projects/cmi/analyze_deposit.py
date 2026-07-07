@@ -110,11 +110,57 @@ def ocr_pdf(pdf_path: str) -> str:
     return text
 
 
+def detect_doc_checkboxes(doc_path: str) -> str:
+    """从 .doc 二进制数据中检测 checkbox 勾选状态，补充到文本末尾"""
+    try:
+        with open(doc_path, "rb") as f:
+            data = f.read()
+
+        import re as _re
+        pattern = b"FORMCHECKBOX"
+        positions = [m.start() for m in _re.finditer(pattern, data)]
+
+        # deposit 相关关键词
+        deposit_keywords = [b"Bank Guarantee", b"Cash Deposit", b"Nil"]
+
+        results = []
+        for pos in positions:
+            after = data[pos + len(pattern):pos + len(pattern) + 6]
+            # 判断勾选：\x14 = checked, \x15 = unchecked
+            checked = b"\x14" in after[:3]
+
+            # 跳过控制字节 (\x01, \x14, \x15, \x20 等)，找到标签文字
+            label_start = 0
+            while label_start < len(after) and after[label_start] < 0x41:  # 跳过控制字节和空格
+                label_start += 1
+            # 从标签位置向后读取可读文字
+            label_area = data[pos + len(pattern) + label_start:pos + len(pattern) + label_start + 30]
+            label_end = 0
+            while label_end < len(label_area) and 0x41 <= label_area[label_end] <= 0x7A:
+                label_end += 1
+            # 也允许空格和斜杠
+            label_text = label_area[:label_end].decode("ascii", errors="ignore").strip()
+
+            # 只记录 deposit 相关的 checkbox
+            if any(kw in label_text.encode() for kw in deposit_keywords):
+                status = "✅ [CHECKED]" if checked else "☐ [UNCHECKED]"
+                results.append(f"  {status} {label_text}")
+
+        if results:
+            return "\n\n--- Checkbox States (from binary) ---\n" + "\n".join(results)
+    except Exception:
+        pass
+    return ""
+
+
 def extract_text(file_path: str) -> str:
     """根据文件类型自动选择提取方式"""
     ext = Path(file_path).suffix.lower()
     if ext in (".doc", ".docx"):
-        return extract_text_from_doc(file_path)
+        text = extract_text_from_doc(file_path)
+        # 补充 checkbox 勾选状态
+        checkbox_info = detect_doc_checkboxes(file_path)
+        return text + checkbox_info
     elif ext == ".pdf":
         return extract_text_from_pdf(file_path)
     else:
@@ -163,7 +209,8 @@ For each document, extract the following as JSON:
 }}
 
 Rules:
-- If deposit section exists but amount is blank/unfilled, set deposit_amount to null and has_deposit_clause to true
+- If deposit type is "Nil" (checkbox checked), this means NO deposit is required — set has_deposit_clause to false, deposit_type to "Nil"
+- If deposit section exists but amount is blank/unfilled (and type is not Nil), set deposit_amount to null and has_deposit_clause to true
 - If no deposit section at all, set has_deposit_clause to false
 - Extract both one-off and monthly charges from the Service BOM / Charges sections
 - Return ONLY valid JSON, no other text
