@@ -16,5 +16,6 @@ print("第一组:", group1)
 print("第二组:", group2)
 
 import sys
+
 print(sys.executable)
 print(sys.prefix)
