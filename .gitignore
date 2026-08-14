@@ -5,6 +5,9 @@ node_modules/
 **/*.pyc
 **/*.env
 
+# Data
+**/data/
+
 # Jupyter
 **/.ipynb_checkpoints/
 
